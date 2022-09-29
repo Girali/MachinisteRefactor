@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - DropZone
+  - Brick
+  - Ally
+  - Chest
+  - Hostile
+  - EnnemyHead
+  - Flag
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Brick
+  - Platform
+  - Interactible
+  - Player
+  - Post Processing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BackgroundBack
+    uniqueID: 737092253
+    locked: 0
+  - name: Dude
+    uniqueID: 1387510997
+    locked: 0
+  - name: Background
+    uniqueID: 579509037
+    locked: 0
+  - name: Screen
+    uniqueID: 549245573
+    locked: 0
+  - name: Machiniste
+    uniqueID: 2369463891
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Overlay
+    uniqueID: 300420735
+    locked: 0

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee027846fd7bc4247917de419c812c56, type: 3}
+  m_Name: 100101
+  m_EditorClassIdentifier: 
+  ID: 100101
+  TexteDialogue: "Pour rappel, utilisez votre curseur pour saisir un objet dans la
+    caisse, puis l\xE2chez-le sur la gauche du tapis roulant."
+  SonDialogue: event:/Test/
+  TempsDialogue: 5
+  TempsPreDialogue: 0.1
+  TempsPostDialogue: 0.36
+  AEteLu: 0
+  DelaiTampon: 15
+  TagDialogueSuivant: {fileID: 0}
+  EvenementSpecial: 0
+  Priorite: 6
+  DoiventEtreLu: []
+  Desactive: 0
+  NeDoitEtreLuQuUneFois: 0
+  AucuneBriqueNestPose: 1
+  NbDialogueSTNPMinimumDit: 0
