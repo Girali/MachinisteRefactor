@@ -5,8 +5,12 @@ using UnityEditor;
 
 public class DialogueDictionary : MonoBehaviour
 {
-    [SerializeField]
-    private Dictionary<int, DialogueObject> dictionnary;// = new List<DialogueObject>();
+    public DialogueObjectHolder dialogueObjectHolder;
+
+    private void Awake()
+    {
+        dialogueObjectHolder = Resources.Load<DialogueObjectHolder>("Dialogues/DialoguesHolder");
+    }
 
 #if UNITY_EDITOR
     public void CreateDataBase()
@@ -18,7 +22,7 @@ public class DialogueDictionary : MonoBehaviour
         Cinq_DicoDialogue d5 = GetComponent<Cinq_DicoDialogue>();
         Six_DicoDialogue d6 = GetComponent<Six_DicoDialogue>();
 
-        dictionnary = new Dictionary<int, DialogueObject>();
+        Dictionary<int, DialogueObject> dictionnary = new Dictionary<int, DialogueObject>();
 
         #region CreateData
         var dd1 = d1.Init();
@@ -28,7 +32,7 @@ public class DialogueDictionary : MonoBehaviour
             d.Copy(item.Value);
             d.ID = item.Key;
 
-            string path = "Assets/Dialogues/" + item.Key + ".asset";
+            string path = "Assets/Resources/Dialogues/" + item.Key + ".asset";
             AssetDatabase.CreateAsset(d, path);
             dictionnary.Add(item.Key, d);
         }
@@ -40,7 +44,7 @@ public class DialogueDictionary : MonoBehaviour
             d.Copy(item.Value);
             d.ID = item.Key;
 
-            string path = "Assets/Dialogues/" + item.Key + ".asset";
+            string path = "Assets/Resources/Dialogues/" + item.Key + ".asset";
             AssetDatabase.CreateAsset(d, path);
             dictionnary.Add(item.Key, d);
         }
@@ -52,7 +56,7 @@ public class DialogueDictionary : MonoBehaviour
             d.Copy(item.Value);
             d.ID = item.Key;
 
-            string path = "Assets/Dialogues/" + item.Key + ".asset";
+            string path = "Assets/Resources/Dialogues/" + item.Key + ".asset";
             AssetDatabase.CreateAsset(d, path);
             dictionnary.Add(item.Key, d);
         }
@@ -64,7 +68,7 @@ public class DialogueDictionary : MonoBehaviour
             d.Copy(item.Value);
             d.ID = item.Key;
 
-            string path = "Assets/Dialogues/" + item.Key + ".asset";
+            string path = "Assets/Resources/Dialogues/" + item.Key + ".asset";
             AssetDatabase.CreateAsset(d, path);
             dictionnary.Add(item.Key, d);
         }
@@ -76,7 +80,7 @@ public class DialogueDictionary : MonoBehaviour
             d.Copy(item.Value);
             d.ID = item.Key;
 
-            string path = "Assets/Dialogues/" + item.Key + ".asset";
+            string path = "Assets/Resources/Dialogues/" + item.Key + ".asset";
             AssetDatabase.CreateAsset(d, path);
             dictionnary.Add(item.Key, d);
         }
@@ -88,7 +92,7 @@ public class DialogueDictionary : MonoBehaviour
             d.Copy(item.Value);
             d.ID = item.Key;
 
-            string path = "Assets/Dialogues/" + item.Key + ".asset";
+            string path = "Assets/Resources/Dialogues/" + item.Key + ".asset";
             AssetDatabase.CreateAsset(d, path);
             dictionnary.Add(item.Key, d);
         }
@@ -194,19 +198,36 @@ public class DialogueDictionary : MonoBehaviour
 
     public void RegisterAll()
     {
-        Object[] dialogues = AssetDatabase.LoadAllAssetsAtPath("Assets/Dialogues");
-        Dictionary<int, DialogueObject> dictionnary = new Dictionary<int, DialogueObject>();
-        foreach (var item in dialogues)
+        Object[] dialogues = Resources.LoadAll("Dialogues", typeof(DialogueObject));
+        dialogueObjectHolder = ScriptableObject.CreateInstance<DialogueObjectHolder>();
+        dialogueObjectHolder.dictionnaryId = new List<int>();
+        dialogueObjectHolder.dictionnary = new List<DialogueObject>();
+
+        for (int i = 0; i < dialogues.Length; i++)
         {
-            DialogueObject o = (DialogueObject)item;
-            dictionnary.Add(o.ID, o);
+            DialogueObject d = (DialogueObject)dialogues[i];
+            dialogueObjectHolder.dictionnaryId.Add(d.ID);
+            dialogueObjectHolder.dictionnary.Add(d);
             AssetDatabase.SaveAssetIfDirty(this);
         }
+
+        string path = "Assets/Resources/Dialogues/DialoguesHolder.asset";
+
+        try
+        {
+            AssetDatabase.DeleteAsset(path);
+        }
+        catch(System.Exception){ }
+
+        AssetDatabase.CreateAsset(dialogueObjectHolder, path);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        EditorUtility.FocusProjectWindow();
     }
 #endif
 
     public DialogueObject FindDialogueByTag(int i)
     {
-        return dictionnary[i];
+        return dialogueObjectHolder[i];
     }
 }
