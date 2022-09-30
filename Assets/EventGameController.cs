@@ -81,6 +81,9 @@ namespace Refactor
                     GameController.Instance.StartGame();
                     GameController.Instance.StartProgress();
                     break;
+                case 607309:
+                    GameController.Instance.LaunchCredits();
+                    break;
                 default:
                     break;
             }

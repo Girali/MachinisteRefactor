@@ -40,6 +40,8 @@ namespace Refactor
                     i = Random.Range(0, spritesOk.Length);
                 }
 
+                indexType = i;
+
                 faceOk.sprite = spritesOk[i];
                 faceFrustrated.sprite = spritesFrustrated[i];
                 faceBored.sprite = spritesBored[i];

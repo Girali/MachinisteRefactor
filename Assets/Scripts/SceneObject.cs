@@ -52,6 +52,9 @@ namespace Refactor
                     rb.bodyType = RigidbodyType2D.Dynamic;
                     rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                     break;
+                case SceneObjectType.Flag:
+                    cldr.isTrigger = true;
+                    break;
                 default:
                     break;
             }

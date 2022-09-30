@@ -30,7 +30,7 @@ namespace Refactor
                     if (dead == false)
                     {
                         Rigidbody2D r = t.data.attachedRigidbody;
-                        if (r.transform.position.y - transform.position.y > 0)
+                        if (r.transform.position.y - 0.5f - transform.position.y > 0)
                         {
                             PlayerManager pm = r.GetComponent<PlayerManager>();
 

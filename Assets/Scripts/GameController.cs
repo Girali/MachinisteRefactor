@@ -34,6 +34,7 @@ namespace Refactor
         public ParticleSystem confetti;
         public GameObject[] flags;
         public Jun_TweenRuntime largeDropArea;
+        public GameObject fin;
 
         public UserInputBox[] userInputBoxes;
 
@@ -72,6 +73,11 @@ namespace Refactor
         public void ChangeToLargeDropArea()
         {
             largeDropArea.Play();
+        }
+
+        public void LaunchCredits()
+        {
+            fin.SetActive(true);
         }
 
         public void SetGameState(int i)
@@ -152,7 +158,7 @@ namespace Refactor
             Unstuck();
             StartGame();
             StartProgress();
-            playerManager.InitMoveSet((PlayerManager.MoveSet)gameState - 1);
+            playerManager.InitMoveSet((PlayerManager.MoveSet)gameState);
         }
 
         private int jumpCombo = 0;
@@ -363,7 +369,7 @@ namespace Refactor
 
         public void StartProgress()
         {
-            playerManager.InitMoveSet((PlayerManager.MoveSet)gameState - 1);
+            playerManager.InitMoveSet((PlayerManager.MoveSet)gameState);
             progressOffset = distanceDone;
             startProgress = true;
             canFail = true;
@@ -436,6 +442,7 @@ namespace Refactor
                             break;
                         case 2:
                             DialogueManageur.Instance.ReceptionDialogue(307201);
+                            waitForDialogueEnd = true;
                             break;
                         case 3:
                             break;
@@ -473,6 +480,7 @@ namespace Refactor
                     {
                         canFail = false;
                         g = Instantiate(flags[0], new Vector3(-9.5f, -1f, 0), Quaternion.identity).GetComponent<SceneObject>();
+                        g.GetInScene();
                         AddObject(g);
                         gameStep++;
                         //do
@@ -496,6 +504,8 @@ namespace Refactor
                     {
                         canFail = false;
                         g = Instantiate(flags[1], new Vector3(-9.5f, -1f, 0), Quaternion.identity).GetComponent<SceneObject>();
+                        g.GetInScene();
+
                         AddObject(g);
                         gameStep++;
                         //do
@@ -519,6 +529,8 @@ namespace Refactor
                     {
                         canFail = false;
                         g = Instantiate(flags[2], new Vector3(-9.5f, -1.1f, 0), Quaternion.identity).GetComponent<SceneObject>();
+                        g.GetInScene();
+
                         AddObject(g);
                         gameStep++;
                         //do
@@ -566,7 +578,7 @@ namespace Refactor
                 {
                     ClearScene();
                     Unstuck();
-                    playerManager.InitMoveSet((PlayerManager.MoveSet)gameState - 1);
+                    playerManager.InitMoveSet((PlayerManager.MoveSet)gameState);
                     frustration = 0;
                     bordom = 0;
                 }

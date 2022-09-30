@@ -49,6 +49,7 @@ public class DialogueManageur : MonoBehaviour
 
     public void ReceptionDialogue(int tag)
     {
+        Debug.LogError(tag);
         DialogueObject d = dialogueDictionary.dialogueObjectHolder[tag];
         ListeTampon.Add(d);
 

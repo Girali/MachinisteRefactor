@@ -191,6 +191,7 @@ namespace Refactor
 
         public void Jump()
         {
+            grounded = false;
             rb.velocity = Vector3.zero;
             animator.SetBool("Grounded", grounded);
             rb.velocity += new Vector2(0, jumpForce);
@@ -198,6 +199,7 @@ namespace Refactor
 
         public void Bounce()
         {
+            grounded = false;
             rb.velocity = Vector3.zero;
             animator.SetBool("Grounded", grounded);
             rb.velocity += new Vector2(0, jumpForce * 0.75f);
