@@ -197,6 +197,118 @@ public class DialogueDictionary : MonoBehaviour
         //Selection.activeObject = d;
     }
 
+    public void Relink()
+    {
+        Un_DicoDialogue d1 = GetComponent<Un_DicoDialogue>();
+        Deux_DicoDialogue d2 = GetComponent<Deux_DicoDialogue>();
+        Trois_DicoDialogue d3 = GetComponent<Trois_DicoDialogue>();
+        Quatre_DicoDialogue d4 = GetComponent<Quatre_DicoDialogue>();
+        Cinq_DicoDialogue d5 = GetComponent<Cinq_DicoDialogue>();
+        Six_DicoDialogue d6 = GetComponent<Six_DicoDialogue>();
+
+        var dd1 = d1.Init();
+        var dd2 = d2.Init();
+        var dd3 = d3.Init();
+        var dd4 = d4.Init();
+        var dd5 = d5.Init();
+        var dd6 = d6.Init();
+
+
+        foreach (var item in dd1)
+        {
+            if (item.Value.TagDialogueSuivant != 0)
+                dialogueObjectHolder[item.Key].TagDialogueSuivant = dialogueObjectHolder[item.Value.TagDialogueSuivant];
+
+            if (item.Value.DoiventEtreLu != null)
+            {
+                dialogueObjectHolder[item.Key].DoiventEtreLu = new List<DialogueObject>();
+                foreach (int i in item.Value.DoiventEtreLu)
+                {
+                    dialogueObjectHolder[item.Key].DoiventEtreLu.Add(dialogueObjectHolder[i]);
+                }
+            }
+        }
+
+        foreach (var item in dd2)
+        {
+            if (item.Value.TagDialogueSuivant != 0)
+                dialogueObjectHolder[item.Key].TagDialogueSuivant = dialogueObjectHolder[item.Value.TagDialogueSuivant];
+
+            if (item.Value.DoiventEtreLu != null)
+            {
+                dialogueObjectHolder[item.Key].DoiventEtreLu = new List<DialogueObject>();
+                foreach (int i in item.Value.DoiventEtreLu)
+                {
+                    dialogueObjectHolder[item.Key].DoiventEtreLu.Add(dialogueObjectHolder[i]);
+                }
+            }
+        }
+
+        foreach (var item in dd3)
+        {
+            if (item.Value.TagDialogueSuivant != 0)
+                dialogueObjectHolder[item.Key].TagDialogueSuivant = dialogueObjectHolder[item.Value.TagDialogueSuivant];
+
+            if (item.Value.DoiventEtreLu != null)
+            {
+                dialogueObjectHolder[item.Key].DoiventEtreLu = new List<DialogueObject>();
+                foreach (int i in item.Value.DoiventEtreLu)
+                {
+                    dialogueObjectHolder[item.Key].DoiventEtreLu.Add(dialogueObjectHolder[i]);
+                }
+            }
+        }
+
+        foreach (var item in dd4)
+        {
+            if (item.Value.TagDialogueSuivant != 0)
+                dialogueObjectHolder[item.Key].TagDialogueSuivant = dialogueObjectHolder[item.Value.TagDialogueSuivant];
+
+            if (item.Value.DoiventEtreLu != null)
+            {
+                dialogueObjectHolder[item.Key].DoiventEtreLu = new List<DialogueObject>();
+                foreach (int i in item.Value.DoiventEtreLu)
+                {
+                    dialogueObjectHolder[item.Key].DoiventEtreLu.Add(dialogueObjectHolder[i]);
+                }
+            }
+        }
+
+        foreach (var item in dd5)
+        {
+            if (item.Value.TagDialogueSuivant != 0)
+                dialogueObjectHolder[item.Key].TagDialogueSuivant = dialogueObjectHolder[item.Value.TagDialogueSuivant];
+
+            if (item.Value.DoiventEtreLu != null)
+            {
+                dialogueObjectHolder[item.Key].DoiventEtreLu = new List<DialogueObject>();
+                foreach (int i in item.Value.DoiventEtreLu)
+                {
+                    dialogueObjectHolder[item.Key].DoiventEtreLu.Add(dialogueObjectHolder[i]);
+                }
+            }
+        }
+
+        foreach (var item in dd6)
+        {
+            if (item.Value.TagDialogueSuivant != 0)
+                dialogueObjectHolder[item.Key].TagDialogueSuivant = dialogueObjectHolder[item.Value.TagDialogueSuivant];
+
+            if (item.Value.DoiventEtreLu != null)
+            {
+                dialogueObjectHolder[item.Key].DoiventEtreLu = new List<DialogueObject>();
+                foreach (int i in item.Value.DoiventEtreLu)
+                {
+                    dialogueObjectHolder[item.Key].DoiventEtreLu.Add(dialogueObjectHolder[i]);
+                }
+            }
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        EditorUtility.FocusProjectWindow();
+    }
+
     public void RegisterAll()
     {
         Object[] dialogues = Resources.LoadAll("Dialogues", typeof(DialogueObject));
@@ -224,6 +336,8 @@ public class DialogueDictionary : MonoBehaviour
         EditorUtility.FocusProjectWindow();
     }
 #endif
+
+
 
     public DialogueObject FindDialogueByTag(int i)
     {

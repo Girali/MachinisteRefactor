@@ -122,10 +122,10 @@ public class DialogueManageur : MonoBehaviour
 
         DialogueADire = tag;
 
-        if (tag.ID >= 200000 && tag.ID < 300000)
-        {
-            ProgressionManageur.PM.NbConversationsSTNPDites++;
-        }
+        //if (tag.ID >= 200000 && tag.ID < 300000)
+        //{
+        //    ProgressionManageur.PM.NbConversationsSTNPDites++;
+        //}
 
         yield return new WaitForSeconds(DialogueADire.TempsPreDialogue);
 

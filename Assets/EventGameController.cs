@@ -52,6 +52,9 @@ namespace Refactor
         {
             switch (o.ID)
             {
+                case 606803:
+                    GameObject.Find("corde").GetComponent<PullRope>().StartCoroutine("Enter");
+                    break;
                 case 600104:
                     GameController.Instance.dudeManager.Init();
                     break;
@@ -61,6 +64,21 @@ namespace Refactor
                     GameController.Instance.StartGame();
                     break;
                 case 600208:
+                    GameController.Instance.GameOver();
+                    GameController.Instance.SetGameState(1);
+                    break;
+                case 602904:
+                    GameController.Instance.userInputBoxes[2].OpenClose(true);
+                    break;
+                case 602908:
+                    GameController.Instance.StartGame();
+                    GameController.Instance.StartProgress();
+                    break;
+                case 603209:
+                    GameController.Instance.ChangeToLargeDropArea();
+                    break;
+                case 603211:
+                    GameController.Instance.StartGame();
                     GameController.Instance.StartProgress();
                     break;
                 default:

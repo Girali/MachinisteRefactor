@@ -38,6 +38,23 @@ public class DialogueObjectHolder : ScriptableObject
         dictionnary.Add(d);
     }
 
+    public Dictionary<int,DialogueObject> GetAllFromDictionaryIndex(int index)
+    {
+        int min = index * 100000;
+        int max = index * 100000 + 99999;
+        Dictionary<int, DialogueObject> d = new Dictionary<int, DialogueObject>();
+
+        for (int i = 0; i < dictionnaryId.Count; i++)
+        {
+            if (dictionnaryId[i] >= min && dictionnaryId[i] <= max)
+            {
+                d.Add(dictionnaryId[i], dictionnary[i]);
+            }
+        }
+
+        return d;
+    }
+
     public  DialogueObject this[int i]
     {
         get

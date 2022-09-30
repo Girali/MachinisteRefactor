@@ -14,6 +14,9 @@ public class DialogueObjectEditor : Editor
         if (GUILayout.Button("Create Data Base"))
             dd.CreateDataBase();
 
+        if (GUILayout.Button("Relink files"))
+            dd.Relink();
+
         if (GUILayout.Button("Register All"))
             dd.RegisterAll();
     }

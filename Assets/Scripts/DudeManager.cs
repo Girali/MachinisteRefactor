@@ -58,7 +58,8 @@ namespace Refactor
                 fadeEye.Rewind();
                 fadeFace.Rewind();
 
-                StartCoroutine(GoneCRT());
+                if(!GameController.Instance.waitForDialogueEnd)
+                    StartCoroutine(GoneCRT());
             }
         }
 

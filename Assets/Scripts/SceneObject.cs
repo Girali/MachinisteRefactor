@@ -65,7 +65,6 @@ namespace Refactor
                 inScene = false;
                 rb.constraints = RigidbodyConstraints2D.None;
                 rb.bodyType = RigidbodyType2D.Dynamic;
-                rb.AddTorque(100, ForceMode2D.Impulse);
 
                 Destroy(gameObject, 4f);
             }

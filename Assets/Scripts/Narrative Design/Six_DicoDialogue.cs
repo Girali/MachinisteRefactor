@@ -243,6 +243,8 @@ public class Six_DicoDialogue : MonoBehaviour
 
         D600208.Priorite = 9;
 
+        D600208.EvenementSpecial = true;
+
         DicoDialogue6.Add(600208, D600208);
 
 

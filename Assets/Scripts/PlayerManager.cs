@@ -11,8 +11,8 @@ namespace Refactor
         private bool grounded = true;
 
         private float jumpForce = 7;
-        private float autoJumpDelayDistance = 0.3f;
-        private float lastJumpdDistance = 0f;
+        private float autoJumpDelay = .1f;
+        private float nextAutoJump = 0f;
         private float IFrameTime = 0f;
         private float IFrameDuration = 2f;
         private bool immune = false;
@@ -28,7 +28,7 @@ namespace Refactor
         {
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            InitMoveSet(MoveSet.JumpWaitJump);
+            InitMoveSet(MoveSet.JumpWait);
         }
 
         public void StopStartWalk(bool b)
@@ -86,10 +86,9 @@ namespace Refactor
         public void PlayerReset()
         {
             grounded = true;
-            lastJumpdDistance = 0f;
+            nextAutoJump = 0f;
             IFrameTime = 0f;
             immune = false;
-            nextJumpDistance = 0;
             moveSetCounter = 0;
             jumpStored = false;
         }
@@ -130,26 +129,31 @@ namespace Refactor
             //else if (rb.velocity.y > 0)
             //    rb.velocity += new Vector2(0, Physics2D.gravity.y * Time.fixedDeltaTime) * 0.8f;
 
-            if (!grounded)
-            { 
-                if (lastJumpdDistance + autoJumpDelayDistance < GameController.Instance.distanceDone || GameController.Instance.stucked)
+
+            Debug.DrawRay(transform.position, Vector3.down * 0.6f, Color.red);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
+
+            if (hit.collider != null)
+            {
+                if (grounded == false && nextAutoJump < Time.time)
                 {
-                    Debug.DrawRay(transform.position, Vector3.down * 0.6f, Color.red);
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
+                    grounded = true;
 
-                    if (hit.collider != null)
-                    {
-                        grounded = true;
+                    SceneObject s = hit.collider.GetComponent<SceneObject>();
 
-                        SceneObject s = hit.collider.GetComponent<SceneObject>();
+                    if (s == null)
+                        EventGameController.Instance.playerGetGrounded();
+                    else if (s.type == SceneObjectType.Block)
+                        EventGameController.Instance.playerJumpOnBlock();
 
-                        if(s == null)
-                            EventGameController.Instance.playerGetGrounded();
-                        else if(s.type == SceneObjectType.Block)
-                            EventGameController.Instance.playerJumpOnBlock();
-
-                        animator.SetBool("Grounded", grounded);
-                    }
+                    animator.SetBool("Grounded", grounded);
+                }
+            }
+            else
+            {
+                if (grounded == true)
+                {
+                    grounded = false;
                 }
             }
         }
@@ -167,7 +171,11 @@ namespace Refactor
                 {
                     if (grounded)
                     {
-                        Jump();
+                        if (nextAutoJump < Time.time && GameController.Instance.TimeStep != 0)
+                        {
+                            Jump();
+                            nextAutoJump = Time.time + autoJumpDelay;
+                        }
                     }
 
                     GameController.Instance.Stuck();
@@ -183,23 +191,16 @@ namespace Refactor
 
         public void Jump()
         {
-            if (grounded && !GameController.Instance.stucked)
-            {
-                grounded = false;
-                rb.velocity = Vector3.zero;
-                animator.SetBool("Grounded", grounded);
-                rb.velocity += new Vector2(0, jumpForce);
-                lastJumpdDistance = GameController.Instance.distanceDone;
-            }
+            rb.velocity = Vector3.zero;
+            animator.SetBool("Grounded", grounded);
+            rb.velocity += new Vector2(0, jumpForce);
         }
 
         public void Bounce()
         {
-            grounded = false;
             rb.velocity = Vector3.zero;
             animator.SetBool("Grounded", grounded);
             rb.velocity += new Vector2(0, jumpForce * 0.75f);
-            lastJumpdDistance = GameController.Instance.distanceDone;
         }
 
         public void InitMoveSet(MoveSet m)
@@ -217,6 +218,7 @@ namespace Refactor
                     nextJumpDistance = GameController.Instance.distanceDone + 5;
                     break;
                 case MoveSet.JumpWaitJumpJump:
+                    nextJumpDistance = GameController.Instance.distanceDone + 5;
                     break;
                 default:
                     break;
@@ -244,6 +246,7 @@ namespace Refactor
             if(jumpStored && grounded)
             {
                 Jump();
+                jumpStored = false;
             }
         }
 
@@ -270,6 +273,12 @@ namespace Refactor
                     Jump();
                 else
                     jumpStored = true;
+            }
+
+            if (jumpStored && grounded)
+            {
+                Jump();
+                jumpStored = false;
             }
         }
 
@@ -299,6 +308,12 @@ namespace Refactor
                     Jump();
                 else
                     jumpStored = true;
+            }
+
+            if (jumpStored && grounded)
+            {
+                Jump();
+                jumpStored = false;
             }
         }
 

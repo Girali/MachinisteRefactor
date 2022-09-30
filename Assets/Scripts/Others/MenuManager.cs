@@ -7,6 +7,11 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject rope;
     public bool hasClickedPlay = false;
+    private void Awake()
+    {
+        MusicEventController.Instance.PlayMusic(MusicEventController.Instance.titleScreen);
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

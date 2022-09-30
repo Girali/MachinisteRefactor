@@ -31,7 +31,9 @@ namespace Refactor
         public Animator belt;
         public PlayerManager playerManager;
         public DudeManager dudeManager;
+        public ParticleSystem confetti;
         public GameObject[] flags;
+        public Jun_TweenRuntime largeDropArea;
 
         public UserInputBox[] userInputBoxes;
 
@@ -48,6 +50,9 @@ namespace Refactor
         private float frustration = 0;
         private float bordom = 0;
 
+        public int gameState = 1;
+        public int gameStateGoalCounter = 1;
+
         public float TimeScale
         {
             get
@@ -62,6 +67,16 @@ namespace Refactor
             {
                 return (speed / (float)Application.targetFrameRate) * timeScale;
             }
+        }
+
+        public void ChangeToLargeDropArea()
+        {
+            largeDropArea.Play();
+        }
+
+        public void SetGameState(int i)
+        {
+            gameState = i;
         }
 
         public void StartStopTime(float t)
@@ -100,15 +115,16 @@ namespace Refactor
             Application.targetFrameRate = 60;
             Time.fixedDeltaTime = 1f / (float)Application.targetFrameRate;
             CreateGrid();
+            MusicEventController.Instance.PlayMusicSequence(MusicEventController.Instance.act1Intro, MusicEventController.Instance.act1Loop);
         }
 
         private void Start()
         {
             EventGameController.Instance.playerGetHit += ResetBoringCounter;
-            EventGameController.Instance.playerGetGrounded += ResetBoringCounter;
+            //EventGameController.Instance.playerGetGrounded += ResetBoringCounter;
             EventGameController.Instance.playerGetFlag += ResetBoringCounter;
             EventGameController.Instance.playerJumpOnBlock += ResetBoringCounter;
-            EventGameController.Instance.playerHeightCheck += ResetBoringCounter;
+            //EventGameController.Instance.playerHeightCheck += ResetBoringCounter;
             EventGameController.Instance.playerOpenChest += ResetBoringCounter;
             EventGameController.Instance.playerKillEnnemy += ResetBoringCounter;
 
@@ -136,6 +152,7 @@ namespace Refactor
             Unstuck();
             StartGame();
             StartProgress();
+            playerManager.InitMoveSet((PlayerManager.MoveSet)gameState - 1);
         }
 
         private int jumpCombo = 0;
@@ -170,8 +187,8 @@ namespace Refactor
         public void Bored()
         {
             bordom += 5;
+            ResetBoringCounter();
         }
-
 
         public void OpenChest()
         {
@@ -326,6 +343,8 @@ namespace Refactor
         public void StartGame()
         {
             playerManager.PlayerReset();
+            if (waitForDialogueEnd)
+                waitForDialogueEnd = false;
             started = true;
             gameStep = 0;
             distanceDone = 0;
@@ -344,6 +363,7 @@ namespace Refactor
 
         public void StartProgress()
         {
+            playerManager.InitMoveSet((PlayerManager.MoveSet)gameState - 1);
             progressOffset = distanceDone;
             startProgress = true;
             canFail = true;
@@ -353,6 +373,85 @@ namespace Refactor
         {
             canFail = false;
             dudeManager.Gone();
+            started = false;
+            startProgress = false;
+        }
+
+        public bool waitForDialogueEnd = false;
+
+        public void Win()
+        {
+            gameStateGoalCounter++;
+
+            switch (gameState)
+            {
+                case 1:
+                    switch (gameStateGoalCounter)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            DialogueManageur.Instance.ReceptionDialogue(300301);
+                            break;
+                        case 3:
+                            DialogueManageur.Instance.ReceptionDialogue(300401);
+                            break;
+                        case 4:
+                            DialogueManageur.Instance.ReceptionDialogue(302901);
+                            gameState = 2;
+                            gameStateGoalCounter = 1;
+                            waitForDialogueEnd = true;
+                            MusicEventController.Instance.PlayMusicSequence(MusicEventController.Instance.act2Intro,MusicEventController.Instance.act2Loop);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (gameStateGoalCounter)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            DialogueManageur.Instance.ReceptionDialogue(303001);
+                            break;
+                        case 3:
+                            DialogueManageur.Instance.ReceptionDialogue(303101);
+                            break;
+                        case 4:
+                            DialogueManageur.Instance.ReceptionDialogue(303201);
+                            gameState = 3;
+                            gameStateGoalCounter = 1;
+                            waitForDialogueEnd = true;
+                            MusicEventController.Instance.PlayMusicSequence(MusicEventController.Instance.act3Intro, MusicEventController.Instance.act3Loop);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (gameStateGoalCounter)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            DialogueManageur.Instance.ReceptionDialogue(307201);
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            canFail = false;
+            dudeManager.Gone();
+            confetti.Play(true);
             started = false;
             startProgress = false;
         }
@@ -384,6 +483,11 @@ namespace Refactor
                     {
                         canFail = true;
                         gameStep++;
+                        if (gameState == 1)
+                        {
+                            Win();
+                            //WIN
+                        }
                         //do
                     }
                     break;
@@ -402,6 +506,11 @@ namespace Refactor
                     {
                         canFail = true;
                         gameStep++;
+                        if (gameState == 2)
+                        {
+                            Win();
+                            //WIN
+                        }
                         //do
                     }
                     break;
@@ -420,6 +529,11 @@ namespace Refactor
                     {
                         canFail = false;
                         gameStep++;
+                        if (gameState == 3)
+                        {
+                            Win();
+                            //WIN
+                        }
                         //do
                     }
                     break;
@@ -451,6 +565,10 @@ namespace Refactor
                 else
                 {
                     ClearScene();
+                    Unstuck();
+                    playerManager.InitMoveSet((PlayerManager.MoveSet)gameState - 1);
+                    frustration = 0;
+                    bordom = 0;
                 }
             }
 

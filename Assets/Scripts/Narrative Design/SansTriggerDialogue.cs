@@ -11,17 +11,10 @@ public class SansTriggerDialogue : MonoBehaviour
 
     bool ARajouterDansDialogue = true;
 
-
     //TEMPORAIRE
-
-   
-
-
     void Update()
     {
-
-
-        if (Time.time >= (GetComponent<DialogueManageur>().TempsDernierDialogue + GetComponent<DialogueManageur>().TempsEntreSilence) && !GetComponent<DialogueManageur>().DialogueEnCours)
+        if (Time.time >= (DialogueManageur.Instance.TempsDernierDialogue + DialogueManageur.Instance.TempsEntreSilence) && !DialogueManageur.Instance.DialogueEnCours)
         {
             SelectionDialoguePrioritaire();
         }
@@ -29,28 +22,27 @@ public class SansTriggerDialogue : MonoBehaviour
 
     private void SelectionDialoguePrioritaire()
     {
-        
         if (TableauRandomDialogue.Count > 0)
         {
             TableauRandomDialogue.Clear();
         }
 
+        Dictionary<int, DialogueObject> d1 = DialogueManageur.Instance.dialogueDictionary.dialogueObjectHolder.GetAllFromDictionaryIndex(1);
 
-        //foreach (KeyValuePair<int, Dialogue> item in Un_DicoDialogue.DicoDialogue1)
-        //{
-        //    ListeTest(item.Value, item.Key);
-        //}
-
+        foreach (KeyValuePair<int, DialogueObject> item in d1)
+        {
+            ListeTest(item.Value, item.Key);
+        }
 
         if (TableauRandomDialogue.Count == 0)
         {
             //SelectionDialogueNonPrioritaire qui arrive si il ny a pas de dialogue prioritaire
-            //foreach (KeyValuePair<int, Dialogue> item in Deux_DicoDialogue.DicoDialogue2)
-            //{
-            //    ListeTest(item.Value, item.Key);
-            //}
+            Dictionary<int, DialogueObject> d2 = DialogueManageur.Instance.dialogueDictionary.dialogueObjectHolder.GetAllFromDictionaryIndex(2);
+            foreach (KeyValuePair<int, DialogueObject> item in d2)
+            {
+                ListeTest(item.Value, item.Key);
+            }
         }
-
         if (TableauRandomDialogue.Count == 0)
         {
             GetComponent<DialogueManageur>().TempsDernierDialogue += 8.0f;
@@ -58,7 +50,6 @@ public class SansTriggerDialogue : MonoBehaviour
         }
 
         DialogueAEnvoyer = TableauRandomDialogue[Random.Range(0, TableauRandomDialogue.Count)];
-
         DialogueManageur.Instance.ReceptionDialogue(DialogueAEnvoyer);
     }
 
@@ -98,10 +89,10 @@ public class SansTriggerDialogue : MonoBehaviour
             }
         }
 
-        if (item.NbDialogueSTNPMinimumDit > ProgressionManageur.PM.NbConversationsSTNPDites)
-        {
-            ARajouterDansDialogue = false;
-        }
+        //if (item.NbDialogueSTNPMinimumDit > ProgressionManageur.PM.NbConversationsSTNPDites)
+        //{
+        //    ARajouterDansDialogue = false;
+        //}
 
 
 
