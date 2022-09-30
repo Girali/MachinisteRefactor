@@ -5,11 +5,11 @@ using UnityEngine;
 public class Trois_DicoDialogue : MonoBehaviour
 {
 
-    public Dictionary<int, Dialogue> Init()
+    public Dictionary<int, Dialogues> Init()
     {
-        Dictionary<int, Dialogue> DicoDialogue3 = new Dictionary<int, Dialogue>();
+        Dictionary<int, Dialogues> DicoDialogue3 = new Dictionary<int, Dialogues>();
 
-        Dialogue D300101 = new Dialogue();
+        Dialogues D300101 = new Dialogues();
 
         D300101.TexteDialogue = "Ah vous v'là ! Rentrez, rentrez ! Installez-vous par ici. Z'êtes bien en avance vous !";
 
@@ -23,7 +23,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300201 = new Dialogue();
+        Dialogues D300201 = new Dialogues();
 
         D300201.TexteDialogue = "Bravo ! Les briques s'acheminent ensuite des coulisses vers la scène.";
 
@@ -37,7 +37,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300301 = new Dialogue();
+        Dialogues D300301 = new Dialogues();
 
         D300301.TexteDialogue = "Hé ben ! Vous l'avez immergé longtemps dans votre petit Univers ! Ah c'est qu'vous êtes né pour ce métier.";
 
@@ -51,7 +51,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300401 = new Dialogue();
+        Dialogues D300401 = new Dialogues();
 
         D300401.TexteDialogue = "Mais c'est qu'avec vous la pièce va s'construire une sacrée renommée !";
 
@@ -65,7 +65,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300501 = new Dialogue();
+        Dialogues D300501 = new Dialogues();
 
         D300501.TexteDialogue = "La hauteur lui va à ravir.";
 
@@ -77,7 +77,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300601 = new Dialogue();
+        Dialogues D300601 = new Dialogues();
 
         D300601.TexteDialogue = "Grandiose, avec ces crapules les mauvaises herbes croissent toujours.";
 
@@ -89,7 +89,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300701 = new Dialogue();
+        Dialogues D300701 = new Dialogues();
 
         D300701.TexteDialogue = "Quand on a besoin des hommes, il faut bien s'adosser à eux.";
 
@@ -101,7 +101,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300801 = new Dialogue();
+        Dialogues D300801 = new Dialogues();
 
         D300801.TexteDialogue = "Hé bien hé bien ! Ils meurent ! Ils sont morts ! Ils sont enterrés !";
 
@@ -113,7 +113,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D300901 = new Dialogue();
+        Dialogues D300901 = new Dialogues();
 
         D300901.TexteDialogue = "Quand il y a de la place pour un, il y en a bien pour dix.";
 
@@ -125,7 +125,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301001 = new Dialogue();
+        Dialogues D301001 = new Dialogues();
 
         D301001.TexteDialogue = "Hé bien vous n'y allez pas de main morte vous.";
 
@@ -137,7 +137,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301101 = new Dialogue();
+        Dialogues D301101 = new Dialogues();
 
         D301101.TexteDialogue = "L'amour est souvent le fruit du manque de place.";
 
@@ -149,7 +149,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301201 = new Dialogue();
+        Dialogues D301201 = new Dialogues();
 
         D301201.TexteDialogue = "Ça me rapelle ma première troupe de théatre.";
 
@@ -161,7 +161,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301301 = new Dialogue();
+        Dialogues D301301 = new Dialogues();
 
         D301301.TexteDialogue = "Attention notre joueur commence à s'ennuyer.";
 
@@ -173,7 +173,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301401 = new Dialogue();
+        Dialogues D301401 = new Dialogues();
 
         D301401.TexteDialogue = "On dirait que l'ennui coule le long d'ses narines.";
 
@@ -185,7 +185,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301501 = new Dialogue();
+        Dialogues D301501 = new Dialogues();
 
         D301501.TexteDialogue = "Notre bon ami semble s'ennuyer.";
 
@@ -197,7 +197,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301601 = new Dialogue();
+        Dialogues D301601 = new Dialogues();
 
         D301601.TexteDialogue = "Aïe j'ai bien peur qu'il ne meurre d'ennui.";
 
@@ -209,7 +209,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301701 = new Dialogue();
+        Dialogues D301701 = new Dialogues();
 
         D301701.TexteDialogue = "Votre mise en scène est trop alambiquée !";
 
@@ -221,7 +221,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301801 = new Dialogue();
+        Dialogues D301801 = new Dialogues();
 
         D301801.TexteDialogue = "Attention à bien mesurer les péripéties !";
 
@@ -233,7 +233,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D301901 = new Dialogue();
+        Dialogues D301901 = new Dialogues();
 
         D301901.TexteDialogue = "La pièce devient beaucoup trop compliqué.";
 
@@ -245,7 +245,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302001 = new Dialogue();
+        Dialogues D302001 = new Dialogues();
 
         D302001.TexteDialogue = "Celui-là a eu l'air déçu de son experience...";
 
@@ -257,7 +257,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302101 = new Dialogue();
+        Dialogues D302101 = new Dialogues();
 
         D302101.TexteDialogue = "Pas d'applaudissement, il est parti déçu.";
 
@@ -269,7 +269,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302201 = new Dialogue();
+        Dialogues D302201 = new Dialogues();
 
         D302201.TexteDialogue = "Parti avant la fin du premier acte, il s'est pas pris au jeu de l'acteur.";
 
@@ -281,7 +281,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302401 = new Dialogue();
+        Dialogues D302401 = new Dialogues();
 
         D302401.TexteDialogue = "La mort venue du ciel.";
 
@@ -293,7 +293,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302501 = new Dialogue();
+        Dialogues D302501 = new Dialogues();
 
         D302501.TexteDialogue = "Belle esquive !";
 
@@ -305,7 +305,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302601 = new Dialogue();
+        Dialogues D302601 = new Dialogues();
 
         D302601.TexteDialogue = "La scène a l'air inaccessible pour notre ami.";
 
@@ -317,7 +317,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302701 = new Dialogue();
+        Dialogues D302701 = new Dialogues();
 
         D302701.TexteDialogue = "Notre joueur a du mal à suivre les rebondissements de la pièce";
 
@@ -329,7 +329,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D302901 = new Dialogue();
+        Dialogues D302901 = new Dialogues();
 
         D302901.TexteDialogue = "Extraordinaire ! Z'avez vraiment ça dans le sang.";
 
@@ -343,7 +343,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303001 = new Dialogue();
+        Dialogues D303001 = new Dialogues();
 
         D303001.TexteDialogue = "Z'avez pris le coup de main avec nos nouveaux joueurs, bravo !";
 
@@ -355,7 +355,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303101 = new Dialogue();
+        Dialogues D303101 = new Dialogues();
 
         D303101.TexteDialogue = "Encore un d'comblé !";
 
@@ -367,7 +367,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303201 = new Dialogue();
+        Dialogues D303201 = new Dialogues();
 
         D303201.TexteDialogue = "Ça y est on dirait bien qu'grace à vous, notre travail est devenu la pièce à streamer du moment.";
 
@@ -381,7 +381,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D306801 = new Dialogue();
+        Dialogues D306801 = new Dialogues();
 
         D306801.TexteDialogue = "Ah y a quelqu'un ?";
 
@@ -397,7 +397,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D306901 = new Dialogue();
+        Dialogues D306901 = new Dialogues();
 
         D306901.TexteDialogue = "Le bouton 'Jouer' est cassé, faut que vous tiriez sur la corde avec votre curseur, pour parvenir jusqu'à moi !";
 
@@ -409,7 +409,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D307201 = new Dialogue();
+        Dialogues D307201 = new Dialogues();
 
         D307201.TexteDialogue = "Ça... Ça y est il a terminé ?";
 
@@ -423,7 +423,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303601 = new Dialogue();
+        Dialogues D303601 = new Dialogues();
 
         D303601.TexteDialogue = "Premier acte, terminé !";
 
@@ -433,7 +433,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303701 = new Dialogue();
+        Dialogues D303701 = new Dialogues();
 
         D303701.TexteDialogue = "Et ainsi se conclut le premier acte.";
 
@@ -443,7 +443,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303801 = new Dialogue();
+        Dialogues D303801 = new Dialogues();
 
         D303801.TexteDialogue = "Fin du premier acte !";
 
@@ -453,7 +453,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D303901 = new Dialogue();
+        Dialogues D303901 = new Dialogues();
 
         D303901.TexteDialogue = "On a pas vu le temps passer durant cet Acte 2 !";
 
@@ -463,7 +463,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D304001 = new Dialogue();
+        Dialogues D304001 = new Dialogues();
 
         D304001.TexteDialogue = "Quel belle conclusion pour ce deuxième acte !";
 
@@ -473,7 +473,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D304101 = new Dialogue();
+        Dialogues D304101 = new Dialogues();
 
         D304101.TexteDialogue = "Un acte 2 qui fût boulversant !";
 
@@ -483,7 +483,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D304201 = new Dialogue();
+        Dialogues D304201 = new Dialogues();
 
         D304201.TexteDialogue = "Un troisième acte a coupé le souffle ! Le public est debout !";
 
@@ -493,7 +493,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D304301 = new Dialogue();
+        Dialogues D304301 = new Dialogues();
 
         D304301.TexteDialogue = "C'est grandiose ! Mais quel 3eme acte saisissant !";
 
@@ -503,7 +503,7 @@ public class Trois_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D304401 = new Dialogue();
+        Dialogues D304401 = new Dialogues();
 
         D304401.TexteDialogue = "Ce 3eme acte, c'était... Vous apprenez vite.";
 
@@ -519,7 +519,7 @@ public class Trois_DicoDialogue : MonoBehaviour
     //private void Start()
     //{
     //    Dico6 = GetComponent<Six_DicoDialogue>();
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue3)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue3)
     //    {
     //        
     //        item.Value.SonDialogue += item.Key.ToString();
@@ -538,7 +538,7 @@ public class Trois_DicoDialogue : MonoBehaviour
     //    }
     //    
     //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue3)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue3)
     //    {
     //        if (item.Value.TagDialogueSuivant != 0)
     //        {

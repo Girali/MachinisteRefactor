@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Cinq_DicoDialogue : MonoBehaviour
 {
-    public Dictionary<int, Dialogue> Init()
+    public Dictionary<int, Dialogues> Init()
     {
-        Dictionary<int, Dialogue> DicoDialogue5 = new Dictionary<int, Dialogue>();
+        Dictionary<int, Dialogues> DicoDialogue5 = new Dictionary<int, Dialogues>();
 
-        Dialogue D500102 = new Dialogue();
+        Dialogues D500102 = new Dialogues();
 
         D500102.TexteDialogue = "C'est une vieille superstition qu'on a dans le métier, ça construit un public plus ouvert !";
 
@@ -18,7 +18,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500202 = new Dialogue();
+        Dialogues D500202 = new Dialogues();
 
         D500202.TexteDialogue = "J'vous ai pas vu frotter beaucoup de briques sur le rideau jusqu'à maintenant.";
 
@@ -30,7 +30,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500203 = new Dialogue();
+        Dialogues D500203 = new Dialogues();
 
         D500203.TexteDialogue = "Vous voulez attirer la malchance sur nous ?";
 
@@ -40,7 +40,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500302 = new Dialogue();
+        Dialogues D500302 = new Dialogues();
 
         D500302.TexteDialogue = "Rassurez-moi, vous pouvez enchainer des nuits de 4 heures de sommeil ?";
 
@@ -50,7 +50,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500402 = new Dialogue();
+        Dialogues D500402 = new Dialogues();
 
         D500402.TexteDialogue = "Si ça peut vous rassurer, on ne dépasse jamais les 70 heures par semaine.";
 
@@ -62,7 +62,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500403 = new Dialogue();
+        Dialogues D500403 = new Dialogues();
 
         D500403.TexteDialogue = "Mais attention, c'est que du plaisir !";
 
@@ -72,7 +72,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500502 = new Dialogue();
+        Dialogues D500502 = new Dialogues();
 
         D500502.TexteDialogue = "Faut dire que je suis plus habitué à voir de nouvelles têtes. J'ai voulu me faire beau et j'y ai gagné qu'une balafre.";
 
@@ -82,7 +82,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500602 = new Dialogue();
+        Dialogues D500602 = new Dialogues();
 
         D500602.TexteDialogue = "Ce serait bête de mourir derrière la scène.";
 
@@ -92,7 +92,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500702 = new Dialogue();
+        Dialogues D500702 = new Dialogues();
 
         D500702.TexteDialogue = "";
 
@@ -104,7 +104,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D500703 = new Dialogue();
+        Dialogues D500703 = new Dialogues();
 
         D500703.TexteDialogue = "En tout cas pas de problème. Z'êtes libre d'être qui vous voulez avec moi.";
 
@@ -114,7 +114,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501202 = new Dialogue();
+        Dialogues D501202 = new Dialogues();
 
         D501202.TexteDialogue = "Mais finalement j'me suis dit que ce serait beaucoup moins amusant pour vous !";
 
@@ -124,7 +124,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501402 = new Dialogue();
+        Dialogues D501402 = new Dialogues();
 
         D501402.TexteDialogue = "Une pièce qui parlait de réussites et d'échecs, de conquête et de sacrifice.";
 
@@ -136,7 +136,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501403 = new Dialogue();
+        Dialogues D501403 = new Dialogues();
 
         D501403.TexteDialogue = "L'ouverture était magnifique, dommage que la phase finale ferme ses rideaux sans nous laisser entrevoir son dénouement.";
 
@@ -148,7 +148,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501404 = new Dialogue();
+        Dialogues D501404 = new Dialogues();
 
         D501404.TexteDialogue = "Les rois meurent comme nous, 'devrait pas y avoir de tabou à l'exposer sur une scène.";
 
@@ -158,7 +158,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501602 = new Dialogue();
+        Dialogues D501602 = new Dialogues();
 
         D501602.TexteDialogue = "'Seriez pas une fleur par hasard ?";
 
@@ -170,7 +170,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501603 = new Dialogue();
+        Dialogues D501603 = new Dialogues();
 
         D501603.TexteDialogue = "En tout cas pour ma part, sachez que vous vous adressez à un membre de la PIRE comu.";
 
@@ -182,7 +182,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D501604 = new Dialogue();
+        Dialogues D501604 = new Dialogues();
 
         D501604.TexteDialogue = "COMBIEEEEEEEEEEEEEN ?";
 
@@ -197,7 +197,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
     //    private void Start()
     //{
     //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue5)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue5)
     //    {
     //        
     //
@@ -217,7 +217,7 @@ public class Cinq_DicoDialogue : MonoBehaviour
     //    }
     //
     //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue5)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue5)
     //    {
     //        if (item.Value.TagDialogueSuivant != 0)
     //        {

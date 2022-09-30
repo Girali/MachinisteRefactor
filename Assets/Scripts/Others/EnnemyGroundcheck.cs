@@ -10,7 +10,7 @@ public class EnnemyGroundcheck : MonoBehaviour
     {
         if (collision.gameObject.tag == "Brick" && !transform.parent.GetComponent<canDrop>().isDragged && !collision.gameObject.GetComponent<canDrop>().isDragged)
         {
-            if (!DialogueManageur.Instance.TrouverDialogueAvecTag(300501).AEteLu)
+            if (!DialogueManageur.Instance.dialogueDictionary.dialogueObjectHolder[300501].AEteLu)
             {
                 DialogueManageur.Instance.ReceptionDialogue(300501);
             }

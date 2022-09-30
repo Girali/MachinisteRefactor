@@ -8,8 +8,35 @@ using System.Linq;
 [CreateAssetMenu(fileName = "New Dialogue Holder", menuName = "Dialogue/NewDialogueHolder")]
 public class DialogueObjectHolder : ScriptableObject
 {
-    public List<int> dictionnaryId;
-    public List<DialogueObject> dictionnary;
+    [SerializeField]
+    private List<int> dictionnaryId;
+    [SerializeField]
+    private List<DialogueObject> dictionnary;
+
+    public int Length
+    {
+        get
+        {
+            return dictionnary.Count;
+        }
+    }
+
+    public DialogueObject GetObject(int i)
+    {
+        return dictionnary[i];
+    }
+
+    public void Init()
+    {
+        dictionnaryId = new List<int>();
+        dictionnary = new List<DialogueObject>();
+    }
+
+    public void Add(int i, DialogueObject d)
+    {
+        dictionnaryId.Add(i);
+        dictionnary.Add(d);
+    }
 
     public  DialogueObject this[int i]
     {

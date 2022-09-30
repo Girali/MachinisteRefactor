@@ -59,12 +59,16 @@ namespace Refactor
 
         public void GetOutScene()
         {
-            inScene = false;
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.AddTorque(100, ForceMode2D.Impulse);
+            if (inScene)
+            {
+                gameObject.layer = 5;
+                inScene = false;
+                rb.constraints = RigidbodyConstraints2D.None;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.AddTorque(100, ForceMode2D.Impulse);
 
-            Destroy(gameObject, 4f);
+                Destroy(gameObject, 4f);
+            }
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision)

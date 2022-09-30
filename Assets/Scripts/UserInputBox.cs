@@ -11,7 +11,7 @@ namespace Refactor
         public GameObject openRender;
         public GameObject closeRender;
 
-        private bool open = true;
+        private bool open = false;
 
         public void OpenClose(bool b)
         {

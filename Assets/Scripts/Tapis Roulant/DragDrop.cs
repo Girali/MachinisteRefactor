@@ -106,11 +106,11 @@ public class DragDrop : MonoBehaviour
                     target.ennemyDrop();
                     FMODUnity.RuntimeManager.PlayOneShot("event:/SD/DropHarpagon");
                     harpagonsOnConveyor++;
-                    if(harpagonsOnConveyor >= 10 && !DialogueManageur.Instance.TrouverDialogueAvecTag(300901).AEteLu)
+                    if(harpagonsOnConveyor >= 10 && !DialogueManageur.Instance.dialogueDictionary.dialogueObjectHolder[300901].AEteLu)
                     {
                         DialogueManageur.Instance.ReceptionDialogue(300901);
                     }
-                    if (harpagonsOnConveyor >= 20 && !DialogueManageur.Instance.TrouverDialogueAvecTag(301001).AEteLu)
+                    if (harpagonsOnConveyor >= 20 && !DialogueManageur.Instance.dialogueDictionary.dialogueObjectHolder[301001].AEteLu)
                     {
                         DialogueManageur.Instance.ReceptionDialogue(301001);
                     }

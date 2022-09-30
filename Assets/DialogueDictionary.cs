@@ -10,6 +10,7 @@ public class DialogueDictionary : MonoBehaviour
     private void Awake()
     {
         dialogueObjectHolder = Resources.Load<DialogueObjectHolder>("Dialogues/DialoguesHolder");
+        LoadDialoguesToFmod();
     }
 
 #if UNITY_EDITOR
@@ -200,14 +201,12 @@ public class DialogueDictionary : MonoBehaviour
     {
         Object[] dialogues = Resources.LoadAll("Dialogues", typeof(DialogueObject));
         dialogueObjectHolder = ScriptableObject.CreateInstance<DialogueObjectHolder>();
-        dialogueObjectHolder.dictionnaryId = new List<int>();
-        dialogueObjectHolder.dictionnary = new List<DialogueObject>();
+        dialogueObjectHolder.Init();
 
         for (int i = 0; i < dialogues.Length; i++)
         {
             DialogueObject d = (DialogueObject)dialogues[i];
-            dialogueObjectHolder.dictionnaryId.Add(d.ID);
-            dialogueObjectHolder.dictionnary.Add(d);
+            dialogueObjectHolder.Add(d.ID,d);
             AssetDatabase.SaveAssetIfDirty(this);
         }
 
@@ -229,5 +228,41 @@ public class DialogueDictionary : MonoBehaviour
     public DialogueObject FindDialogueByTag(int i)
     {
         return dialogueObjectHolder[i];
+    }
+
+    private void LoadDialoguesToFmod()
+    {
+        for (int i = 0; i < dialogueObjectHolder.Length; i++)
+        {
+            DialogueObject o = dialogueObjectHolder.GetObject(i);
+
+            o.SonDialogue = o.SonDialoguePath + o.ID.ToString();
+            FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(o.SonDialogue);
+            FMOD.Studio.EventDescription description;
+            instance.getDescription(out description);
+            int t = 0;
+            description.getLength(out t);
+            o.TempsDialogue = t / 1000;
+        }
+
+        for (int i = 0; i < dialogueObjectHolder.Length; i++)
+        {
+            DialogueObject o = dialogueObjectHolder.GetObject(i);
+
+            o.AEteLu = false;
+
+            if (o.TagDialogueSuivant != null)
+            {
+                o.TagDialogueSuivant.DelaiTampon = o.TempsDialogue + o.TempsPreDialogue + o.TempsPostDialogue + 1;
+            }
+
+            if (DialogueManageur.Instance.EnPlaytest)
+            {
+                if (o.SonDialogue == "event:/Test/")
+                {
+                    o.Desactive = true;
+                }
+            }
+        }
     }
 }

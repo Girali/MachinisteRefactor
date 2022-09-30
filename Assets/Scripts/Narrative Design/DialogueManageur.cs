@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Refactor;
 
 public class DialogueManageur : MonoBehaviour
 {
+    public DialogueDictionary dialogueDictionary;
     public TMP_Text text;
     public bool Menu = false;
     public float TempsDernierDialogue;
     public float TempsEntreSilence = 8.0f;
     public bool EnPlaytest = true;
-    public List<int> ListeTampon = new List<int>();
+    public List<DialogueObject> ListeTampon = new List<DialogueObject>();
     public bool DialogueEnCours = false;
 
-    private List<int> ListePriorite = new List<int>();
+    private List<DialogueObject> ListePriorite = new List<DialogueObject>();
     private int PrioriteMax = 0;
     private int PrioriteTeste;
-    private int DialogueALancer;
-    private int DialogueSuivant;
-    private Dialogue DialogueADire;
+    private DialogueObject DialogueALancer;
+    private DialogueObject DialogueSuivant;
+    private DialogueObject DialogueADire;
     private IEnumerator coroutine;
     private Animator machiniste;
 
@@ -35,11 +37,6 @@ public class DialogueManageur : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     private void Start()
     {
         TempsDernierDialogue = Time.time;
@@ -52,20 +49,14 @@ public class DialogueManageur : MonoBehaviour
 
     public void ReceptionDialogue(int tag)
     {
-        ListeTampon.Add(tag);
+        DialogueObject d = dialogueDictionary.dialogueObjectHolder[tag];
+        ListeTampon.Add(d);
 
-
-        coroutine = TamponNettoyeur(tag);
-
+        coroutine = TamponNettoyeur(d);
         StartCoroutine(coroutine);
-
 
         LanceurDialogue();
     }
-
-
-
-
 
     private void LanceurDialogue()
     {
@@ -82,15 +73,12 @@ public class DialogueManageur : MonoBehaviour
         ListePriorite.Clear();
         PrioriteMax = -10;
 
-        foreach (int item in ListeTampon)
+        foreach (DialogueObject item in ListeTampon)
         {
-            PrioriteTeste = TrouverDialogueAvecTag(item).Priorite;
-
-            //Debug.Log("On test le dialogue " + item + " qui a la priorité " + PrioriteTeste + " alors que la priorité max actuelle est de " + PrioriteMax);
+            PrioriteTeste = item.Priorite;
 
             if (PrioriteTeste >= PrioriteMax)
             {
-
                 if (PrioriteTeste > PrioriteMax)
                 {
                     ListePriorite.Clear();
@@ -101,27 +89,25 @@ public class DialogueManageur : MonoBehaviour
             }
         }
 
-        if (ListePriorite.Count == 1)
-        {
-            DialogueALancer = ListePriorite[0];
-        }
-        else
-        {
-            DialogueALancer = ListePriorite[Random.Range(0, ListePriorite.Count)];
-        }
 
-        while (ListeTampon.Remove(DialogueALancer)) ;
+        if (ListePriorite.Count == 1)
+            DialogueALancer = ListePriorite[0];
+        else
+            DialogueALancer = ListePriorite[Random.Range(0, ListePriorite.Count)];
+
+        while (ListeTampon.Remove(DialogueALancer));
 
         coroutine = CRAfficheurDialogue(DialogueALancer);
 
         StartCoroutine(coroutine);
 
-        DialogueSuivant = TrouverDialogueAvecTag(DialogueALancer).TagDialogueSuivant;
+        DialogueSuivant = DialogueALancer.TagDialogueSuivant;
 
-        if (DialogueSuivant == 0)
-        {
+        if (DialogueSuivant == null)
             return;
-        }
+
+        if (DialogueSuivant.ID == 0)
+            return;
 
         ListeTampon.Add(DialogueSuivant);
 
@@ -130,57 +116,13 @@ public class DialogueManageur : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-
-
-
-    public Dialogue TrouverDialogueAvecTag(int tag)
-    {
-        //Debug.Log("TrouverDialogueAvecTag a reçu une requête pour le tag "+ tag);
-
-        if (tag >= 100000 && tag < 200000)
-        {
-            //return Un_DicoDialogue.DicoDialogue1[tag];
-        }
-
-        if (tag >= 200000 && tag < 300000)
-        {
-            //return Deux_DicoDialogue.DicoDialogue2[tag];
-        }
-
-        if (tag >= 300000 && tag < 400000)
-        {
-            //return Dico3.DicoDialogue3[tag];
-        }
-
-        if (tag >= 400000 && tag < 500000)
-        {
-            //return Quatre_DicoDialogue.DicoDialogue4[tag];
-        }
-
-        if (tag >= 500000 && tag < 600000)
-        {
-            //return Cinq_DicoDialogue.DicoDialogue5[tag];
-        }
-
-        if (tag >= 600000 && tag < 700000)
-        {
-            //return Dico6.DicoDialogue6[tag];
-        }
-
-        return null;
-    }
-
-
-
-
-
-    private IEnumerator CRAfficheurDialogue(int tag)
+    private IEnumerator CRAfficheurDialogue(DialogueObject tag)
     {
         DialogueEnCours = true;
 
-        DialogueADire = TrouverDialogueAvecTag(tag);
+        DialogueADire = tag;
 
-        if (tag >= 200000 && tag < 300000)
+        if (tag.ID >= 200000 && tag.ID < 300000)
         {
             ProgressionManageur.PM.NbConversationsSTNPDites++;
         }
@@ -194,7 +136,9 @@ public class DialogueManageur : MonoBehaviour
 
         if (DialogueADire.EvenementSpecial)
         {
-            GetComponent<EvenementDialogueManageur>().EDM.EvenementSpeciaux(tag);
+            EventGameController.Instance.NotifyDialogueEndEvent(tag);
+            Debug.LogError(tag.ID);
+            //GetComponent<EvenementDialogueManageur>().EDM.EvenementSpeciaux(tag);
         }
 
         //Afficher DialogueADire.TextDialogue
@@ -236,9 +180,9 @@ public class DialogueManageur : MonoBehaviour
 
 
 
-    private IEnumerator TamponNettoyeur(int tag)
+    private IEnumerator TamponNettoyeur(DialogueObject tag)
     {
-        yield return new WaitForSeconds(TrouverDialogueAvecTag(tag).DelaiTampon);
+        yield return new WaitForSeconds(tag.DelaiTampon);
 
         ListeTampon.Remove(tag);
     }

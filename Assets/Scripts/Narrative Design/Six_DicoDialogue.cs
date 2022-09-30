@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Six_DicoDialogue : MonoBehaviour
 {
-    public Dictionary<int, Dialogue> Init()
+    public Dictionary<int, Dialogues> Init()
     {
-        Dictionary<int, Dialogue> DicoDialogue6 = new Dictionary<int, Dialogue>();
+        Dictionary<int, Dialogues> DicoDialogue6 = new Dictionary<int, Dialogues>();
 
-        Dialogue D600102 = new Dialogue();
+        Dialogues D600102 = new Dialogues();
 
         D600102.TexteDialogue = "Z'êtes le stagiaire c'est ça ? J'ai appris récemment vot' venue.";
 
@@ -21,7 +21,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600103 = new Dialogue();
+        Dialogues D600103 = new Dialogues();
 
         D600103.TexteDialogue = "Je n'ai pas eu le temps de faire le ménage, ceux d'en haut y z'ont l'chic pour prevenir au dernier moment.";
 
@@ -35,7 +35,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600104 = new Dialogue();
+        Dialogues D600104 = new Dialogues();
 
         D600104.TexteDialogue = "C'est que... Ouh là mais on dirait que notre premier joueur vient d'arriver.";
 
@@ -49,7 +49,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600105 = new Dialogue();
+        Dialogues D600105 = new Dialogues();
 
         D600105.TexteDialogue = "Bon j'sais pas ce qu'on vous a dit en haut, mais notre métier c'est d'amuser ces joueurs.";
 
@@ -61,7 +61,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
         
-        Dialogue D600106 = new Dialogue();
+        Dialogues D600106 = new Dialogues();
 
         D600106.TexteDialogue = "Je sais que c'est vot' premier jour, donc j'vais essayer de vous la faire courte. Vous voyez ces caisses devant vous ?";
 
@@ -73,7 +73,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600107 = new Dialogue();
+        Dialogues D600107 = new Dialogues();
 
         D600107.TexteDialogue = "Faudrait qu'vous en sortiez les accessoires et que vous les déposiez au démarrage du tapis roulant.";
 
@@ -87,7 +87,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600108 = new Dialogue();
+        Dialogues D600108 = new Dialogues();
 
         D600108.TexteDialogue = "Dans le jargon, on appelle ces accessoires des briques de gameplay.";
 
@@ -101,7 +101,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600109 = new Dialogue();
+        Dialogues D600109 = new Dialogues();
 
         D600109.TexteDialogue = "Ben allez-y n'ayez pas peur, prenez donc une brique et mettez là à gauche sur le tapis roulant. ";
 
@@ -115,7 +115,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600110 = new Dialogue();
+        Dialogues D600110 = new Dialogues();
 
         D600110.TexteDialogue = "Hum vous rencontrez des difficultés ?";
 
@@ -129,7 +129,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600111 = new Dialogue();
+        Dialogues D600111 = new Dialogues();
 
         D600111.TexteDialogue = "J'suis pas censé vous le dire, mais essayez peut-être d'utiliser votre curseur pour saisir les objets dans la caisse ?";
 
@@ -141,7 +141,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600112 = new Dialogue();
+        Dialogues D600112 = new Dialogues();
 
         D600112.TexteDialogue = "Z'êtes là ?";
 
@@ -153,7 +153,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600113 = new Dialogue();
+        Dialogues D600113 = new Dialogues();
 
         D600113.TexteDialogue = "J'peux attendre.";
 
@@ -163,7 +163,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600202 = new Dialogue();
+        Dialogues D600202 = new Dialogues();
 
         D600202.TexteDialogue = "Craignez rien en les manipulant, j'ai fabriqué chaque pièce moi-même. Elles sont toutes d'excellente facture !";
 
@@ -177,7 +177,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600203 = new Dialogue();
+        Dialogues D600203 = new Dialogues();
 
         D600203.TexteDialogue = "Ce que nos joueurs désirent, c'est que de ces briques, vous érigiez des niveaux rocambolesques.";
 
@@ -189,7 +189,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600204 = new Dialogue();
+        Dialogues D600204 = new Dialogues();
 
         D600204.TexteDialogue = "N'hésitez pas à exploiter toute votre imagination !";
 
@@ -201,7 +201,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600205 = new Dialogue();
+        Dialogues D600205 = new Dialogues();
 
         D600205.TexteDialogue = "D'ailleurs je... Enfin, je vous laisse découvrir tout ça. ";
 
@@ -213,7 +213,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600206 = new Dialogue();
+        Dialogues D600206 = new Dialogues();
 
         D600206.TexteDialogue = "Essayez de garder un joueur assez intéréssé pour qu'il atteigne la fin du premier acte. ";
 
@@ -225,7 +225,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600207 = new Dialogue();
+        Dialogues D600207 = new Dialogues();
 
         D600207.TexteDialogue = "Les actes se terminent quand les joueurs atteignent un grand drapeau, 'verrez qu'il fait son petit effet.";
 
@@ -237,7 +237,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600208 = new Dialogue();
+        Dialogues D600208 = new Dialogues();
 
         D600208.TexteDialogue = "Allez je vous regarde. Z'allez parfaitement vous en sortir !";
 
@@ -247,7 +247,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600302 = new Dialogue();
+        Dialogues D600302 = new Dialogues();
 
         D600302.TexteDialogue = "Ça fait plaisir de voir la nouvelle génération avec autant d'aisance, on s'rassure sur l'avenir de notre profession.";
 
@@ -259,7 +259,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600303 = new Dialogue();
+        Dialogues D600303 = new Dialogues();
 
         D600303.TexteDialogue = "Enfin ! On m'fera pas passer par la fenêtre tout de suite non plus ! Va falloir faire avec moi, partenaire.";
 
@@ -271,7 +271,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600304 = new Dialogue();
+        Dialogues D600304 = new Dialogues();
 
         D600304.TexteDialogue = "J'imagine que vous l'avez remarqué, mais les joueurs ont tendance à rapidement s'ennuyer.";
 
@@ -283,7 +283,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600305 = new Dialogue();
+        Dialogues D600305 = new Dialogues();
 
         D600305.TexteDialogue = "Faut arriver à les occuper en se réinventant et en proposant des mise en scène toujours plus ingénieuses.";
 
@@ -295,7 +295,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600306 = new Dialogue();
+        Dialogues D600306 = new Dialogues();
 
         D600306.TexteDialogue = "Mais attention à n'pas le frustrer avec la difficulté. ";
 
@@ -307,7 +307,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600307 = new Dialogue();
+        Dialogues D600307 = new Dialogues();
 
         D600307.TexteDialogue = "Trouver l'équilibre, c'est tous l'art de notre métier, je suis sur que vous allez vous en sortir !";
 
@@ -320,7 +320,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600308 = new Dialogue();
+        Dialogues D600308 = new Dialogues();
 
         D600308.TexteDialogue = "J'vous l'ai pas dit plus tôt, mais si vous n'tenez pas la cadence, 'pouvez toujours arrêter le tapis pour prendre vot' temps.";
 
@@ -332,7 +332,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600309 = new Dialogue();
+        Dialogues D600309 = new Dialogues();
 
         D600309.TexteDialogue = "Pointez votre curseur sur moi et je vous laisse l'espace nécessaire pour réfléchir. Mais n'en abusez pas au risque d'ennuyer les joueurs !";
 
@@ -342,7 +342,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600402 = new Dialogue();
+        Dialogues D600402 = new Dialogues();
 
         D600402.TexteDialogue = "C'est le deuxième joueur qui repart le sourire agraphé jusqu'au front.";
 
@@ -354,7 +354,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600403 = new Dialogue();
+        Dialogues D600403 = new Dialogues();
 
         D600403.TexteDialogue = "Continuez, vous êtes... enfin, déjà, vous nous happez le public.";
 
@@ -366,7 +366,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600404 = new Dialogue();
+        Dialogues D600404 = new Dialogues();
 
         D600404.TexteDialogue = "Avant vot' arrivée, nos joueurs n'étaient qu'des personnages qui exhumaient notre pièce par hasard.";
 
@@ -378,7 +378,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D600405 = new Dialogue();
+        Dialogues D600405 = new Dialogues();
 
         D600405.TexteDialogue = "Continuez ce que vous faites, et notre réussite s'accompagnera de... de récompenses !";
 
@@ -388,7 +388,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D606802 = new Dialogue();
+        Dialogues D606802 = new Dialogues();
 
         D606802.TexteDialogue = "Mince je sais pas si vous m'entendez, mais le bouton 'Jouer' est cassé.";
 
@@ -402,7 +402,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D606803 = new Dialogue();
+        Dialogues D606803 = new Dialogues();
 
         D606803.TexteDialogue = "Je suis juste derrière le menu, faudrait que vous tiriez sur cette corde pour soulever l'écran qu'est en face de vous !";
 
@@ -414,7 +414,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602902 = new Dialogue();
+        Dialogues D602902 = new Dialogues();
 
         D602902.TexteDialogue = "'Dirait bien que le bouche à oreille a marché, il y a des nouveaux arrivants qu'ont tous l'air d'aficionados de théatre.";
 
@@ -426,7 +426,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602903 = new Dialogue();
+        Dialogues D602903 = new Dialogues();
 
         D602903.TexteDialogue = "Ça fait longtemps que j'attendais une opportunité comme celle-là, attendez d'voir c'que j'avais prévu.";
 
@@ -438,7 +438,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602904 = new Dialogue();
+        Dialogues D602904 = new Dialogues();
 
         D602904.TexteDialogue = "Des nouvelles briques, en veux-tu, en voilà !";
 
@@ -452,7 +452,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602905 = new Dialogue();
+        Dialogues D602905 = new Dialogues();
 
         D602905.TexteDialogue = "Ça vas nous permettre de renouveler un peu notre mise en scène.";
 
@@ -464,7 +464,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602906 = new Dialogue();
+        Dialogues D602906 = new Dialogues();
 
         D602906.TexteDialogue = "J'ai appelé c'te nouvelle brique une cassette.";
 
@@ -476,7 +476,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602907 = new Dialogue();
+        Dialogues D602907 = new Dialogues();
 
         D602907.TexteDialogue = "Utilisez là pour récompenser les joueurs quand vous estimez qui z'ont relevé une belle péripétie.";
 
@@ -488,7 +488,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602908 = new Dialogue();
+        Dialogues D602908 = new Dialogues();
 
         D602908.TexteDialogue = "Les v'là qui z'arrivent. N'oubliez pas, y sont déjà habitués au registre de notre pièce.";
 
@@ -502,7 +502,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D602909 = new Dialogue();
+        Dialogues D602909 = new Dialogues();
 
         D602909.TexteDialogue = "C'coup là, montrez vous plus innovant que jamais ! Il faudrait que vous arriviez à leur faire finir le deuxième acte.";
 
@@ -512,7 +512,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603002 = new Dialogue();
+        Dialogues D603002 = new Dialogues();
 
         D603002.TexteDialogue = "Faîtes bien attention avec les cassettes, les joueurs doivent surtout pas reconnaitre les astuce de votre mise en scene et s'y habituer.";
 
@@ -524,7 +524,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603003 = new Dialogue();
+        Dialogues D603003 = new Dialogues();
 
         D603003.TexteDialogue = "Une cassette, c'est quand ça surprend qu'ça fait plaisir !";
 
@@ -534,7 +534,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603102 = new Dialogue();
+        Dialogues D603102 = new Dialogues();
 
         D603102.TexteDialogue = "Hé dîtes, j'ai entendu dire que des streameurs hésiteraient d'venir assister à not' pièce.";
 
@@ -546,7 +546,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603103 = new Dialogue();
+        Dialogues D603103 = new Dialogues();
 
         D603103.TexteDialogue = "Z'imaginez si on avait quelqu'un d'cet accabit comme audience ?";
 
@@ -558,7 +558,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603104 = new Dialogue();
+        Dialogues D603104 = new Dialogues();
 
         D603104.TexteDialogue = "Avec toute l'influence qu'ont ces gens-là, vous et moi on partirait pour une tournée mondiale, pour sûr !";
 
@@ -570,7 +570,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603105 = new Dialogue();
+        Dialogues D603105 = new Dialogues();
 
         D603105.TexteDialogue = "Mais avant ça, vas falloir attirer encore un chouïa plus d'attention sur nous.";
 
@@ -582,7 +582,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603106 = new Dialogue();
+        Dialogues D603106 = new Dialogues();
 
         D603106.TexteDialogue = "Faîtes une mise en scène aguicheuse, astiquez les briques sur le rideau ! Faut que tout ceux qui s'approchent s'arrêtent pour assister à la pièce.";
 
@@ -594,7 +594,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603107 = new Dialogue();
+        Dialogues D603107 = new Dialogues();
 
         D603107.TexteDialogue = "Faut qu'on leur donne envie d'assister à notre pièce, avant même qu'ils se posent la question de si ils en ont envie ou le temps.";
 
@@ -606,7 +606,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603108 = new Dialogue();
+        Dialogues D603108 = new Dialogues();
 
         D603108.TexteDialogue = "On rentre dans la cours des grands et la concurence est rude, ne l'oublions pas. Il faut tout mettre en oeuvre pour attirer ses streameurs.";
 
@@ -616,7 +616,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603202 = new Dialogue();
+        Dialogues D603202 = new Dialogues();
 
         D603202.TexteDialogue = "Z'imaginez si un seul d'entre eux streamait le jeu jusqu'à la fin du 3eme acte ?";
 
@@ -628,7 +628,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603203 = new Dialogue();
+        Dialogues D603203 = new Dialogues();
 
         D603203.TexteDialogue = "Not' pièce deviendrait immortelle et serait joué des siècles après not' mort.";
 
@@ -640,7 +640,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603204 = new Dialogue();
+        Dialogues D603204 = new Dialogues();
 
         D603204.TexteDialogue = "Mmmh.. Il m'reste encore une nouvelle brique dans les coulisses qu'on pourrait ressortir. Arlequin que je l'ai appelé.";
 
@@ -652,7 +652,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603205 = new Dialogue();
+        Dialogues D603205 = new Dialogues();
 
         D603205.TexteDialogue = "J'ai... J'ai longtemps hésité à l'integrer dans la pièce.";
 
@@ -664,7 +664,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603206 = new Dialogue();
+        Dialogues D603206 = new Dialogues();
 
         D603206.TexteDialogue = "Dans l'idée, Arlequin donne des quêtes aux joueurs, des objectifs à suivre.";
 
@@ -678,7 +678,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603207 = new Dialogue();
+        Dialogues D603207 = new Dialogues();
 
         D603207.TexteDialogue = "Les joueurs se sentiront attirés par ces aventures. Ils auront envie de les suivre.";
 
@@ -690,7 +690,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603208 = new Dialogue();
+        Dialogues D603208 = new Dialogues();
 
         D603208.TexteDialogue = "Ils se sentiront puissants si elle leur fait parcourir avec panache de périlleuses péripéties.";
 
@@ -702,7 +702,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603209 = new Dialogue();
+        Dialogues D603209 = new Dialogues();
 
         D603209.TexteDialogue = "Pour vous aider, je vais aussi vous permettre plus de créativité, en vous laissant poser des briques où bon vous semble.";
 
@@ -716,7 +716,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603210 = new Dialogue();
+        Dialogues D603210 = new Dialogues();
 
         D603210.TexteDialogue = "Ça devrait doper votre imagination, et vous aider à garder un de nos amis streameurs jusqu'au 3eme acte.";
 
@@ -730,7 +730,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D603211 = new Dialogue();
+        Dialogues D603211 = new Dialogues();
 
         D603211.TexteDialogue = "Et voilà le premier qui arrive. Souvenez-vous, il nous suffit d'un seul streameur séduit et la pièce restera éternelle !";
 
@@ -741,7 +741,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607202 = new Dialogue();
+        Dialogues D607202 = new Dialogues();
 
         D607202.TexteDialogue = "Il part... Il... Il vas surement allez uploader la capture de notre pièce sur sa chaîne Youtube ?";
 
@@ -753,7 +753,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607203 = new Dialogue();
+        Dialogues D607203 = new Dialogues();
 
         D607203.TexteDialogue = "Je.. Euh...";
 
@@ -765,7 +765,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607204 = new Dialogue();
+        Dialogues D607204 = new Dialogues();
 
         D607204.TexteDialogue = "C'est génial ! Bravo à nous ! Vous... Vous êtes content ?";
 
@@ -777,7 +777,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607205 = new Dialogue();
+        Dialogues D607205 = new Dialogues();
 
         D607205.TexteDialogue = "Enfin enfin, il reste encore plein de choses à accomplir !";
 
@@ -789,7 +789,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607206 = new Dialogue();
+        Dialogues D607206 = new Dialogues();
 
         D607206.TexteDialogue = "Je.. La prochaine étape c'est.. Hum... Attendez voir..";
 
@@ -801,7 +801,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607207 = new Dialogue();
+        Dialogues D607207 = new Dialogues();
 
         D607207.TexteDialogue = "Coloniser l'Univers ! Nous allons maitenant étendre notre renommée jusqu'aux confins de la Voie Lactée !";
 
@@ -813,7 +813,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607208 = new Dialogue();
+        Dialogues D607208 = new Dialogues();
 
         D607208.TexteDialogue = "Enfilez votre scaphandre l'ami, l'oeil de l'Univers nous apelle !";
 
@@ -825,7 +825,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607209 = new Dialogue();
+        Dialogues D607209 = new Dialogues();
 
         D607209.TexteDialogue = "Haha.";
 
@@ -837,7 +837,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607210 = new Dialogue();
+        Dialogues D607210 = new Dialogues();
 
         D607210.TexteDialogue = "Hmm.";
 
@@ -849,7 +849,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607211 = new Dialogue();
+        Dialogues D607211 = new Dialogues();
 
         D607211.TexteDialogue = "Ça...Ça ne prend pas c'est ça ?";
 
@@ -861,7 +861,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607302 = new Dialogue();
+        Dialogues D607302 = new Dialogues();
 
         D607302.TexteDialogue = "Je... J'imagine que ça s'arrête comme ça alors.";
 
@@ -873,7 +873,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607303 = new Dialogue();
+        Dialogues D607303 = new Dialogues();
 
         D607303.TexteDialogue = "Je n'ai plus ni objectifs, ni récompense pour vous convaincre de continuer de jouer à ce jeu.";
 
@@ -885,7 +885,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607304 = new Dialogue();
+        Dialogues D607304 = new Dialogues();
 
         D607304.TexteDialogue = "J'ai épuisé toute les astuces que je conaissais pour vous amuser et vous conserver jusqu'à ce moment.";
 
@@ -897,7 +897,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607305 = new Dialogue();
+        Dialogues D607305 = new Dialogues();
 
         D607305.TexteDialogue = "Je... J'espere que vous avez quand même retenu un truc ou deux pendant ce jeu-vidéo.";
 
@@ -909,7 +909,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607306 = new Dialogue();
+        Dialogues D607306 = new Dialogues();
 
         D607306.TexteDialogue = "Pour ma part je.. J'ai l'impression que j'aurai pu. J'aurai pu apprendre quelque chose. Que l'issu aurait pu être différente.";
 
@@ -921,7 +921,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607307 = new Dialogue();
+        Dialogues D607307 = new Dialogues();
 
         D607307.TexteDialogue = "Mais j'ai écrit cette pièce, et je sais que c'est ainsi qu'elle doit se terminer.";
 
@@ -933,7 +933,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607308 = new Dialogue();
+        Dialogues D607308 = new Dialogues();
 
         D607308.TexteDialogue = "Travailler avec vous a été... Au revoir, joueur dont j'ignore le nom.";
 
@@ -945,7 +945,7 @@ public class Six_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D607309 = new Dialogue();
+        Dialogues D607309 = new Dialogues();
 
         D607309.TexteDialogue = "Et c'est ainsi que cette pièce-ci s'est donc finie.";
 
@@ -961,7 +961,7 @@ public class Six_DicoDialogue : MonoBehaviour
     //private void Start()
     //{
     //    
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue6)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue6)
     //    {
     //        
     //        item.Value.SonDialogue += item.Key.ToString();
@@ -980,7 +980,7 @@ public class Six_DicoDialogue : MonoBehaviour
     //    }
     //    
     //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue6)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue6)
     //    {
     //        if (item.Value.TagDialogueSuivant != 0)
     //        {

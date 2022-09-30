@@ -62,7 +62,7 @@ public class SansTriggerDialogue : MonoBehaviour
         DialogueManageur.Instance.ReceptionDialogue(DialogueAEnvoyer);
     }
 
-    private void ListeTest(Dialogue item, int KeyItem)
+    private void ListeTest(DialogueObject item, int KeyItem)
     {
 
         ARajouterDansDialogue = true;
@@ -81,9 +81,9 @@ public class SansTriggerDialogue : MonoBehaviour
 
         if (item.DoiventEtreLu.Count != 0)
         {
-            foreach (int Atester in item.DoiventEtreLu)
+            foreach (DialogueObject Atester in item.DoiventEtreLu)
             {
-                if (!DialogueManageur.Instance.TrouverDialogueAvecTag(Atester).AEteLu)
+                if (!Atester.AEteLu)
                 {
                     ARajouterDansDialogue = false;
                 }

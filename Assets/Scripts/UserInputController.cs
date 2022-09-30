@@ -53,6 +53,7 @@ namespace Refactor
                     {
                         currentGrabbedObject.GetInScene();
                         GameController.Instance.AddObject(currentGrabbedObject);
+                        EventGameController.Instance.NotifyUserPlaceElement(currentGrabbedObject);
                     }
                     else
                     {

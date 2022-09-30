@@ -8,8 +8,6 @@ namespace Refactor
     {
         private Rigidbody2D rb;
 
-        private float distanceDone = 0;
-        private float lastDistance = 0;
         private bool grounded = true;
 
         private float jumpForce = 7;
@@ -42,13 +40,21 @@ namespace Refactor
         {
             SceneObject s = c.data.GetComponent<SceneObject>();
 
-            if (s && s.type == SceneObjectType.Ennemy)
+            if (s)
             {
-                if (!immune)
+                if(s.type == SceneObjectType.Ennemy)
                 {
-                    immune = true;
-                    IFrameTime = distanceDone + IFrameDuration;
-                    StartCoroutine(GetHitCRT());
+                    if (!immune)
+                    {
+                        immune = true;
+                        EventGameController.Instance.playerGetHit();
+                        IFrameTime = GameController.Instance.distanceDone + IFrameDuration;
+                        StartCoroutine(GetHitCRT());
+                    }
+                }
+                else if (s.type == SceneObjectType.Flag)
+                {
+                    EventGameController.Instance.playerGetFlag();
                 }
             }
         }
@@ -74,12 +80,29 @@ namespace Refactor
             rope.enabled = true;
         }
 
+        private float nextHeightCheck = 0;
+        private float hieghtCheckDistance = 5;
+
+        public void PlayerReset()
+        {
+            grounded = true;
+            lastJumpdDistance = 0f;
+            IFrameTime = 0f;
+            immune = false;
+            nextJumpDistance = 0;
+            moveSetCounter = 0;
+            jumpStored = false;
+        }
+
         public void Move(float frameDistance)
         {
-            lastDistance = distanceDone;
-            distanceDone += frameDistance;
+            if(GameController.Instance.distanceDone > nextHeightCheck)
+            {
+                nextHeightCheck = GameController.Instance.distanceDone + hieghtCheckDistance;
+                EventGameController.Instance.playerHeightCheck();
+            }
 
-            if(immune && IFrameTime < distanceDone)
+            if(immune && IFrameTime < GameController.Instance.distanceDone)
             {
                 immune = false;
             }
@@ -102,14 +125,14 @@ namespace Refactor
 
         private void FixedUpdate()
         {
-            if (rb.velocity.y < 0)
-                rb.velocity += new Vector2(0, Physics2D.gravity.y * Time.fixedDeltaTime) * 1.5f;
-            else if (rb.velocity.y > 0)
-                rb.velocity += new Vector2(0, Physics2D.gravity.y * Time.fixedDeltaTime) * 0.8f;
+            //if (rb.velocity.y < 0)
+            //    rb.velocity += new Vector2(0, Physics2D.gravity.y * Time.fixedDeltaTime) * 1.5f;
+            //else if (rb.velocity.y > 0)
+            //    rb.velocity += new Vector2(0, Physics2D.gravity.y * Time.fixedDeltaTime) * 0.8f;
 
             if (!grounded)
             { 
-                if (lastJumpdDistance + autoJumpDelayDistance < distanceDone)
+                if (lastJumpdDistance + autoJumpDelayDistance < GameController.Instance.distanceDone || GameController.Instance.stucked)
                 {
                     Debug.DrawRay(transform.position, Vector3.down * 0.6f, Color.red);
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
@@ -117,6 +140,14 @@ namespace Refactor
                     if (hit.collider != null)
                     {
                         grounded = true;
+
+                        SceneObject s = hit.collider.GetComponent<SceneObject>();
+
+                        if(s == null)
+                            EventGameController.Instance.playerGetGrounded();
+                        else if(s.type == SceneObjectType.Block)
+                            EventGameController.Instance.playerJumpOnBlock();
+
                         animator.SetBool("Grounded", grounded);
                     }
                 }
@@ -125,29 +156,50 @@ namespace Refactor
 
         private void Update()
         {
-            if (grounded)
-            {
-                Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.red);
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 0.6f);
+            Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.red);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 0.6f);
 
-                if (hit.collider != null)
+            if (hit.collider != null)
+            {
+                SceneObject s = hit.collider.GetComponent<SceneObject>();
+
+                if (s != null && s.type == SceneObjectType.Block)
                 {
-                    SceneObject s = hit.collider.GetComponent<SceneObject>();
-                    if (s != null && s.type == SceneObjectType.Block)
+                    if (grounded)
                     {
                         Jump();
                     }
+
+                    GameController.Instance.Stuck();
+                    animator.SetBool("Walking", false);
                 }
+            }
+            else
+            {
+                GameController.Instance.Unstuck();
+                animator.SetBool("Walking", true);
             }
         }
 
         public void Jump()
         {
+            if (grounded && !GameController.Instance.stucked)
+            {
+                grounded = false;
+                rb.velocity = Vector3.zero;
+                animator.SetBool("Grounded", grounded);
+                rb.velocity += new Vector2(0, jumpForce);
+                lastJumpdDistance = GameController.Instance.distanceDone;
+            }
+        }
+
+        public void Bounce()
+        {
             grounded = false;
             rb.velocity = Vector3.zero;
             animator.SetBool("Grounded", grounded);
-            rb.velocity += new Vector2(0, jumpForce);
-            lastJumpdDistance = distanceDone;
+            rb.velocity += new Vector2(0, jumpForce * 0.75f);
+            lastJumpdDistance = GameController.Instance.distanceDone;
         }
 
         public void InitMoveSet(MoveSet m)
@@ -159,10 +211,10 @@ namespace Refactor
             switch (m)
             {
                 case MoveSet.JumpWait:
-                    nextJumpDistance = distanceDone + 5;
+                    nextJumpDistance = GameController.Instance.distanceDone + 5;
                     break;
                 case MoveSet.JumpWaitJump:
-                    nextJumpDistance = distanceDone + 5;
+                    nextJumpDistance = GameController.Instance.distanceDone + 5;
                     break;
                 case MoveSet.JumpWaitJumpJump:
                     break;
@@ -179,9 +231,9 @@ namespace Refactor
 
         private void MoveSet1()
         {
-            if(distanceDone > nextJumpDistance )
+            if(GameController.Instance.distanceDone > nextJumpDistance && nextJumpDistance != 0)
             {
-                nextJumpDistance = distanceDone + 5 - (GameController.Instance.TimeStep * 3f);
+                nextJumpDistance = GameController.Instance.distanceDone + 5 - (GameController.Instance.TimeStep * 3f);
 
                 if (grounded)
                     Jump();
@@ -197,16 +249,17 @@ namespace Refactor
 
         private void MoveSet2()
         {
-            if (distanceDone > nextJumpDistance)
+
+            if (GameController.Instance.distanceDone > nextJumpDistance && nextJumpDistance != 0)
             {
                 switch (moveSetCounter)
                 {
                     case 0:
-                        nextJumpDistance = distanceDone + 1 - (GameController.Instance.TimeStep * 3f);
+                        nextJumpDistance = GameController.Instance.distanceDone + 1 - (GameController.Instance.TimeStep * 3f);
                         moveSetCounter = 1;
                         break;
                     case 1:
-                        nextJumpDistance = distanceDone + 5 - (GameController.Instance.TimeStep * 3f);
+                        nextJumpDistance = GameController.Instance.distanceDone + 5 - (GameController.Instance.TimeStep * 3f);
                         moveSetCounter = 0;
                         break;
                     default:
@@ -222,20 +275,20 @@ namespace Refactor
 
         private void MoveSet3()
         {
-            if (distanceDone > nextJumpDistance)
+            if (GameController.Instance.distanceDone > nextJumpDistance && nextJumpDistance != 0)
             {
                 switch (moveSetCounter)
                 {
                     case 0:
-                        nextJumpDistance = distanceDone + 1 - (GameController.Instance.TimeStep * 3f);
+                        nextJumpDistance = GameController.Instance.distanceDone + 1 - (GameController.Instance.TimeStep * 3f);
                         moveSetCounter = 1;
                         break;
                     case 1:
-                        nextJumpDistance = distanceDone + 1 - (GameController.Instance.TimeStep * 3f);
+                        nextJumpDistance = GameController.Instance.distanceDone + 1 - (GameController.Instance.TimeStep * 3f);
                         moveSetCounter = 2;
                         break;
                     case 2:
-                        nextJumpDistance = distanceDone + 5 - (GameController.Instance.TimeStep * 3f);
+                        nextJumpDistance = GameController.Instance.distanceDone + 5 - (GameController.Instance.TimeStep * 3f);
                         moveSetCounter = 0;
                         break;
                     default:

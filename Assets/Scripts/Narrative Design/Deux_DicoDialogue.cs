@@ -5,11 +5,11 @@ using UnityEngine;
 public class Deux_DicoDialogue : MonoBehaviour
 {
 
-    public Dictionary<int, Dialogue> Init()
+    public Dictionary<int, Dialogues> Init()
     {
-        Dictionary<int, Dialogue> DicoDialogue2 = new Dictionary<int, Dialogue>();
+        Dictionary<int, Dialogues> DicoDialogue2 = new Dictionary<int, Dialogues>();
 
-        Dialogue D200101 = new Dialogue();
+        Dialogues D200101 = new Dialogues();
 
         D200101.TexteDialogue = "J'ai failli oublier ! N'hésitez pas à frotter les briques sur le rideau avant de les déposer sur le tapis roulant.";
 
@@ -21,7 +21,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200201 = new Dialogue();
+        Dialogues D200201 = new Dialogues();
 
         D200201.TexteDialogue = "Z'êtes sur d'avoir pris au serieux mon conseil de tout à l'heure ?";
 
@@ -37,7 +37,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200301 = new Dialogue();
+        Dialogues D200301 = new Dialogues();
 
         D200301.TexteDialogue = "J'espère que vous êtes passioné par ce que vous faîtes, parce que dans le métier on a tendance à faire quelques heures sup'.";
 
@@ -49,7 +49,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200401 = new Dialogue();
+        Dialogues D200401 = new Dialogues();
 
         D200401.TexteDialogue = "J'espère ne pas vous avoir effrayé tout à l'heure quand j'ai parlé d'heure sup'.";
 
@@ -65,7 +65,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200501 = new Dialogue();
+        Dialogues D200501 = new Dialogues();
 
         D200501.TexteDialogue = "Ce matin j'étais tellement pressé de vous rencontrer que je me suis coupé en me rasant.";
 
@@ -77,7 +77,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200601 = new Dialogue();
+        Dialogues D200601 = new Dialogues();
 
         D200601.TexteDialogue = "Ma balafre au visage me démange un peu, j'espère qu'elle ne vas pas s'infecter.";
 
@@ -93,7 +93,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200701 = new Dialogue();
+        Dialogues D200701 = new Dialogues();
 
         D200701.TexteDialogue = "J'ai remarqué que vous êtes plus discret que bavard, je me trompe ?";
 
@@ -107,7 +107,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D200901 = new Dialogue();
+        Dialogues D200901 = new Dialogues();
 
         D200901.TexteDialogue = "On dirait qu'on a trouvé not' rythme de travail, z'en sortez comme un coq !";
 
@@ -117,7 +117,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201001 = new Dialogue();
+        Dialogues D201001 = new Dialogues();
 
         D201001.TexteDialogue = "Normalement, j'ai tout mis en oeuvre pour que cette pièce soit un succès total.";
 
@@ -127,7 +127,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201101 = new Dialogue();
+        Dialogues D201101 = new Dialogues();
 
         D201101.TexteDialogue = "C'est fou comme le silence a tendance à rappliquer rapidement.";
 
@@ -139,7 +139,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201201 = new Dialogue();
+        Dialogues D201201 = new Dialogues();
 
         D201201.TexteDialogue = "Au début, je voulais que nos places soient inversées. Vous auriez contrôlé le tapis roulant et rentranscrit les mouvements du joueur.";
 
@@ -151,7 +151,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201401 = new Dialogue();
+        Dialogues D201401 = new Dialogues();
 
         D201401.TexteDialogue = "J'ai découvert une pièce fabuleuse ce matin sur mon téléphone.";
 
@@ -165,7 +165,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201501 = new Dialogue();
+        Dialogues D201501 = new Dialogues();
 
         D201501.TexteDialogue = "Pour la pièce, j'avais aussi une autre idée de personnage... Un sale escroc profiteur, mais j'ai eu trop peur qu'il ne passe pas la censure.";
 
@@ -177,7 +177,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201601 = new Dialogue();
+        Dialogues D201601 = new Dialogues();
 
         D201601.TexteDialogue = "Et vous, z'avez un streameur que vous aimeriez attirer dans notre salle pour assister à la pièce ? ";
 
@@ -191,7 +191,7 @@ public class Deux_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D201701 = new Dialogue();
+        Dialogues D201701 = new Dialogues();
 
         D201701.TexteDialogue = "Je me demande si le message des oeuvres infuse aussi bien quand on assiste à une pièce, que quand on assiste à sa version revisitée par un streameur.";
 
@@ -206,46 +206,5 @@ public class Deux_DicoDialogue : MonoBehaviour
     }
 
 
-    //    private void Start()
-    //{
-    //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue2)
-    //    {
-    //        item.Value.SonDialogue += item.Key.ToString();
-    //
-    //        int t = 0;
-    //        FMOD.Studio.EventInstance instance;
-    //        instance = FMODUnity.RuntimeManager.CreateInstance(item.Value.SonDialogue);
-    //        FMOD.Studio.EventDescription description;
-    //        //Prendre la durée du clip de item.Value.SonDialogue et le mettre dans item.Value.TempsDialogue
-    //        instance.getDescription(out description);
-    //        description.getLength(out t);
-    //        item.Value.TempsDialogue = t / 1000;
-    //        
-    //
-    //        //On peut enlever ce if si on a un son qui sapelle "NotDefined.wav" et qui dure 5s de silence, auquel cas on peut mettre la ligne directement et enelver la condition
-    //    }
-    //
-    //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue2)
-    //    {
-    //        if (item.Value.TagDialogueSuivant != 0)
-    //        {
-    //            Cinq_DicoDialogue.DicoDialogue5[item.Value.TagDialogueSuivant].DelaiTampon = item.Value.TempsDialogue + item.Value.TempsPreDialogue + item.Value.TempsPostDialogue + 1;
-    //        }
-    //
-    //    }
-    //
-    //    if (DialogueManageur.Instance.EnPlaytest)
-    //    {
-    //        foreach (KeyValuePair<int, Dialogue> item in DicoDialogue2)
-    //        {
-    //            if (item.Value.SonDialogue == "event:/Test/")
-    //            {
-    //                item.Value.Desactive = true;
-    //            }
-    //        }
-    //    }
-    //    
-    //}
+
 }

@@ -12,15 +12,7 @@ public class EvenementDialogueManageur : MonoBehaviour
     TargetManager TM;
     void Awake()
     {
-        if (EDM == null)
-        {
-            EDM = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this);
-        }
+
         if(GameObject.Find("Targets") != null)
         {
             TM = GameObject.Find("Targets").GetComponent<TargetManager>();
@@ -28,8 +20,10 @@ public class EvenementDialogueManageur : MonoBehaviour
         
     }
 
-    public void EvenementSpeciaux(int tag)
+    public void EvenementSpeciaux(DialogueObject t)
     {
+        int tag = t.ID;
+
         if (tag == 600104)
         {
             //Faire apparaitre la première cible du jeu. (se declenche apres quelques premiers dialogues du Machiniste)

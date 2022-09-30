@@ -12,6 +12,7 @@ public class DialogueObject : ScriptableObject
     public string TexteDialogue = "None";
     //Le texte du dialogue
 
+    public readonly string SonDialoguePath = "event:/Test/";
     public string SonDialogue = "event:/Test/";
     //Chemin d'acces Son du dialogue
 
@@ -27,9 +28,11 @@ public class DialogueObject : ScriptableObject
     public bool AEteLu = false;
     //Indique si le dialogue a déjà été lu
 
+    public readonly float DelaiTamponConst = 15.0f;
     public float DelaiTampon = 15.0f;
     //Le temps que le dialogue peut rester en tampon avant detre lu
 
+    [SerializeField]
     public DialogueObject TagDialogueSuivant = null;
     //Indique le dialogue qui doit etre lu après celui ci
 
@@ -40,6 +43,7 @@ public class DialogueObject : ScriptableObject
     //Priorité de lancement par rapport à d'autres dialogues si plusieurs dialogues sont dans le tampon
     //CONDITION (ATTENTION CA NEST UTILE QUE POUR LES DIALOGUES DU DICO 1 ET 2)
 
+    [SerializeField]
     public List<DialogueObject> DoiventEtreLu = new List<DialogueObject>();
     //Liste des dialogues qui doivent etre pour que le dialogue puisse etre selectionné
 
@@ -54,7 +58,7 @@ public class DialogueObject : ScriptableObject
 
     public int NbDialogueSTNPMinimumDit = 0;
 
-    public void Copy(Dialogue d)
+    public void Copy(Dialogues d)
     {
         this.TexteDialogue = d.TexteDialogue;
         this.SonDialogue = d.SonDialogue;

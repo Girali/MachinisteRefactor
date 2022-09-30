@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 public class Un_DicoDialogue : MonoBehaviour
 {
 
-    public Dictionary<int, Dialogue> Init()
+    public Dictionary<int, Dialogues> Init()
     {
-        Dictionary<int, Dialogue> DicoDialogue1 = new Dictionary<int, Dialogue>();
+        Dictionary<int, Dialogues> DicoDialogue1 = new Dictionary<int, Dialogues>();
 
-        Dialogue D100101 = new Dialogue();
+        Dialogues D100101 = new Dialogues();
 
         D100101.TexteDialogue = "Pour rappel, utilisez votre curseur pour saisir un objet dans la caisse, puis lâchez-le sur la gauche du tapis roulant.";
 
@@ -26,7 +26,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100201 = new Dialogue();
+        Dialogues D100201 = new Dialogues();
 
         D100201.TexteDialogue = "Pour la petite histoire, l'ennemi que vous disposez sur le tapis roulant depuis tout à l'heure s'appelle Harpagon.";
 
@@ -40,7 +40,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100301 = new Dialogue();
+        Dialogues D100301 = new Dialogues();
 
         D100301.TexteDialogue = "J'y pense, mais pour revenir sur le sujet de l'équilibre entre l'ennui et la frustration des joueurs...";
 
@@ -54,7 +54,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100401 = new Dialogue();
+        Dialogues D100401 = new Dialogues();
 
         D100401.TexteDialogue = "Vous savez, vous regarder travailler me met de la crème aux artères.";
 
@@ -68,7 +68,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100601 = new Dialogue();
+        Dialogues D100601 = new Dialogues();
 
         D100601.TexteDialogue = "N'abusez pas trop des cassettes, faudrait pas que notre bon ami se transforme en Harpagon !";
 
@@ -80,7 +80,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100701 = new Dialogue();
+        Dialogues D100701 = new Dialogues();
 
         D100701.TexteDialogue = "À chaque péripétie sa cassette, les joueurs doivent être récompensés pour tous leurs coups d'éclat !";
 
@@ -92,7 +92,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100801 = new Dialogue();
+        Dialogues D100801 = new Dialogues();
 
         D100801.TexteDialogue = "La mise en scène est importante, c'est le vecteur de ce qu'on veut voir perpétuer.";
 
@@ -106,7 +106,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D100901 = new Dialogue();
+        Dialogues D100901 = new Dialogues();
 
         D100901.TexteDialogue = "Notre métier est difficile vous savez. Après les longues sessions de travail, j'ai qu'une envie c'est m'vautrer dans un fauteuil et lancer un vinyle de Radiohead.";
 
@@ -120,7 +120,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D101001 = new Dialogue();
+        Dialogues D101001 = new Dialogues();
 
         D101001.TexteDialogue = "Les gens du métier ont tendance à l'oublier, mais l'objectif de ce qu'on fait, ce n'est pas de rapporter de l'argent à ceux d'en haut.";
 
@@ -134,7 +134,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D101101 = new Dialogue();
+        Dialogues D101101 = new Dialogues();
 
         D101101.TexteDialogue = "C'est dommage, de là où on est, on n'arrive pas à apercevoir dans quelles conditions nos joueurs assistent à la pièce.";
 
@@ -148,7 +148,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D101201 = new Dialogue();
+        Dialogues D101201 = new Dialogues();
 
         D101201.TexteDialogue = "Je réfléchis à ces cassettes... J'les avais fabriqué pour les sortir après le lancement de la pièce. Pour relancer la dynamique vous voyez.";
 
@@ -162,7 +162,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D101501 = new Dialogue();
+        Dialogues D101501 = new Dialogues();
 
         D101501.TexteDialogue = "J'ai créé Arlequin après avoir lu un bouquin qui parlait de biais cognitifs.";
 
@@ -176,7 +176,7 @@ public class Un_DicoDialogue : MonoBehaviour
 
 
 
-        Dialogue D101601 = new Dialogue();
+        Dialogues D101601 = new Dialogues();
 
         D101601.TexteDialogue = "Maitenant qu'vous pouvez poser votre brique où vous le voulez, faites bien attention à ce que vous faîtes !";
 
@@ -194,7 +194,7 @@ public class Un_DicoDialogue : MonoBehaviour
     //private void Start()
     //{
     //    
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue1)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue1)
     //    {
     //        item.Value.SonDialogue += item.Key.ToString();
     //
@@ -212,7 +212,7 @@ public class Un_DicoDialogue : MonoBehaviour
     //    }
     //    
     //
-    //    foreach (KeyValuePair<int, Dialogue> item in DicoDialogue1)
+    //    foreach (KeyValuePair<int, Dialogues> item in DicoDialogue1)
     //    {
     //        if (item.Value.TagDialogueSuivant != 0)
     //        {
@@ -224,7 +224,7 @@ public class Un_DicoDialogue : MonoBehaviour
     //
     //    if (DialogueManageur.DM.EnPlaytest)
     //    {
-    //        foreach (KeyValuePair<int, Dialogue> item in DicoDialogue1)
+    //        foreach (KeyValuePair<int, Dialogues> item in DicoDialogue1)
     //        {
     //            if (item.Value.SonDialogue == "event:/Test/")
     //            {

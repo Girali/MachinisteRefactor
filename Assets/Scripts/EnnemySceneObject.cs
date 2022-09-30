@@ -13,11 +13,12 @@ namespace Refactor
         public void Death()
         {
             dead = true;
-            cldr.isTrigger = true;
+            cldr.enabled = false;
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             alive.SetActive(false);
             death.SetActive(true);
+            EventGameController.Instance.playerKillEnnemy();
         }
 
         public void OnTrigger(TriggerTrigger t)
@@ -35,8 +36,9 @@ namespace Refactor
 
                             if (!pm.Grounded)
                             {
+                                
                                 Death();
-                                pm.Jump();
+                                pm.Bounce();
                             }
                         }
                     }

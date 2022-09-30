@@ -27,6 +27,7 @@ namespace Refactor
                 {
                     if (opened == false)
                     {
+                        EventGameController.Instance.playerOpenChest();
                         opened = true;
                         open.SetActive(false);
                         close.SetActive(true);

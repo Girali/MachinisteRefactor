@@ -25,13 +25,18 @@ namespace Refactor
         private Vector2 gridLimitY = new Vector2(-1f, 3f);
         private float gridSpacing = 1f;
         private float speed = 1f;
+        private float originalSpeed = 1f;
         private float timeScale = 1f;
-        private float distanceDone = 0f;
+        public float distanceDone = 0f;
         public Animator belt;
         public PlayerManager playerManager;
         public DudeManager dudeManager;
         public GameObject[] flags;
 
+        public UserInputBox[] userInputBoxes;
+
+        private bool started = false;
+        private bool startProgress = false;
         private int gameStep = 0;
         private bool canFail = false;
 
@@ -39,6 +44,9 @@ namespace Refactor
         private float from0to1 = 45;
         private float from1to2 = 30;
         private float from2to3 = 30;
+
+        private float frustration = 0;
+        private float bordom = 0;
 
         public float TimeScale
         {
@@ -72,6 +80,19 @@ namespace Refactor
             }
         }
 
+        public void ResetBoringCounter()
+        {
+            nextBoringCycle = distanceDone + boringCycleLength;
+        }
+
+        public void ClearScene()
+        {
+            foreach (var item in objectList)
+            {
+                item.GetOutScene();
+            }
+        }
+
         private void Awake()
         {
             objectList = new List<SceneObject>();
@@ -79,6 +100,149 @@ namespace Refactor
             Application.targetFrameRate = 60;
             Time.fixedDeltaTime = 1f / (float)Application.targetFrameRate;
             CreateGrid();
+        }
+
+        private void Start()
+        {
+            EventGameController.Instance.playerGetHit += ResetBoringCounter;
+            EventGameController.Instance.playerGetGrounded += ResetBoringCounter;
+            EventGameController.Instance.playerGetFlag += ResetBoringCounter;
+            EventGameController.Instance.playerJumpOnBlock += ResetBoringCounter;
+            EventGameController.Instance.playerHeightCheck += ResetBoringCounter;
+            EventGameController.Instance.playerOpenChest += ResetBoringCounter;
+            EventGameController.Instance.playerKillEnnemy += ResetBoringCounter;
+
+            EventGameController.Instance.playerGetHit += Hit;
+            EventGameController.Instance.playerGetGrounded += ResetCombo;
+            //EventGameController.Instance.playerGetFlag += ResetBoringCounter;
+            EventGameController.Instance.playerJumpOnBlock += JumpCombo;
+            EventGameController.Instance.playerHeightCheck += PlayerHeight;
+            EventGameController.Instance.playerOpenChest += OpenChest;
+            EventGameController.Instance.playerKillEnnemy += EnnemyKilled;
+            EventGameController.Instance.playerQuestComplet += CompleteQuest;
+            EventGameController.Instance.dudeBoringCycle += Bored;
+            EventGameController.Instance.dudeGone += RestartGame;
+        }
+
+        public void RestartGame()
+        {
+            StartCoroutine(RestartCRT());
+        }
+
+        private IEnumerator RestartCRT()
+        {
+            ClearScene();
+            yield return new WaitForSeconds(1f);
+            Unstuck();
+            StartGame();
+            StartProgress();
+        }
+
+        private int jumpCombo = 0;
+        private int ennemyCombo = 0;
+        private int comboChest = 0;
+        private int consecutiveJumps = 0;
+        private int consecutiveEnnemies = 0;
+
+        public void ResetCombo()
+        {
+            jumpCombo = 0;
+            ennemyCombo = 0;
+        }
+
+        public void PlayerHeight()
+        {
+            bordom -= 5;
+        }
+
+        public void EnnemyKilled()
+        {
+            ennemyCombo++;
+            consecutiveEnnemies++;
+            consecutiveJumps = 0;
+            if (consecutiveEnnemies <= 3)
+            {
+                frustration -= 20;
+                dudeManager.happy.Play();
+            }
+        }
+
+        public void Bored()
+        {
+            bordom += 5;
+        }
+
+
+        public void OpenChest()
+        {
+            if (comboChest < ennemyCombo + jumpCombo)
+            {
+                bordom -= 10;
+                frustration -= 10;
+                comboChest++;
+                dudeManager.happy.Play();
+            }
+            else
+            {
+                bordom += 5;
+                frustration += 5;
+            }
+        }
+
+        public void CompleteQuest()
+        {
+            bordom -= 30;
+            frustration -= 30;
+            dudeManager.happy.Play();
+        }
+
+        public bool stucked = false;
+        float nextResetByStuck = 0;
+        float delayResetByStuck = 3;
+
+        public void Stuck()
+        {
+            if (!stucked)
+            {
+                originalSpeed = speed;
+                speed = 0;
+                stucked = true;
+                nextResetByStuck = Time.time + delayResetByStuck;
+            }
+        }
+
+        public void Unstuck()
+        {
+            if (stucked)
+            {
+                nextResetByStuck = 0;
+                speed = originalSpeed;
+                stucked = false;
+            }
+        }
+
+        public void JumpCombo()
+        {
+            jumpCombo++;
+
+            consecutiveJumps++;
+            consecutiveEnnemies = 0;
+
+            if (consecutiveEnnemies <= 3)
+            {
+                bordom -= 5;
+                if (jumpCombo > 1)
+                {
+                    bordom -= 5;
+                    dudeManager.happy.Play();
+                }
+            }
+        }
+
+        public void Hit()
+        {
+            frustration += 20;
+            dudeManager.sad.Play();
         }
 
         public void AddObject(SceneObject s)
@@ -129,7 +293,8 @@ namespace Refactor
         {
             float moveSpeed = TimeStep;
 
-            distanceDone += moveSpeed;
+            if(started)
+                distanceDone += moveSpeed;
 
             foreach (SceneObject t in objectList)
             {
@@ -160,14 +325,42 @@ namespace Refactor
 
         public void StartGame()
         {
-            canFail = true;
+            playerManager.PlayerReset();
+            started = true;
             gameStep = 0;
             distanceDone = 0;
+            nextBoringCycle = distanceDone + boringCycleLength;
+            jumpCombo = 0;
+            ennemyCombo = 0;
+            comboChest = 0;
+            consecutiveJumps = 0;
+            consecutiveEnnemies = 0;
+            frustration = 0;
+            bordom = 0;
+            dudeManager.Init();
         }
 
-        public void FailGame()
+        float progressOffset = 0;
+
+        public void StartProgress()
+        {
+            progressOffset = distanceDone;
+            startProgress = true;
+            canFail = true;
+        }
+
+        public void GameOver()
         {
             canFail = false;
+            dudeManager.Gone();
+            started = false;
+            startProgress = false;
+        }
+
+        public void StopGame()
+        {
+            canFail = false;
+            started = false;
         }
 
         public void FlagCheck()
@@ -177,7 +370,7 @@ namespace Refactor
             switch (gameStep)
             {
                 case 0://spawn flag 1
-                    if (distanceDone > (from0to1) - flagDelay)
+                    if (distanceDone > progressOffset + (from0to1) - flagDelay)
                     {
                         canFail = false;
                         g = Instantiate(flags[0], new Vector3(-9.5f, -1f, 0), Quaternion.identity).GetComponent<SceneObject>();
@@ -187,7 +380,7 @@ namespace Refactor
                     }
                         break;
                 case 1://pasted flag 1
-                    if (distanceDone > (from0to1))
+                    if (distanceDone > progressOffset + (from0to1))
                     {
                         canFail = true;
                         gameStep++;
@@ -195,7 +388,7 @@ namespace Refactor
                     }
                     break;
                 case 2://spawn flag 2
-                    if (distanceDone > (from0to1 + from1to2) - flagDelay)
+                    if (distanceDone > progressOffset + (from0to1 + from1to2) - flagDelay)
                     {
                         canFail = false;
                         g = Instantiate(flags[1], new Vector3(-9.5f, -1f, 0), Quaternion.identity).GetComponent<SceneObject>();
@@ -205,7 +398,7 @@ namespace Refactor
                     }
                     break;
                 case 3://pasted flag 2
-                    if (distanceDone > (from0to1 + from1to2))
+                    if (distanceDone > progressOffset + (from0to1 + from1to2))
                     {
                         canFail = true;
                         gameStep++;
@@ -213,7 +406,7 @@ namespace Refactor
                     }
                     break;
                 case 4://spawn flag 3
-                    if (distanceDone > (from0to1 + from1to2 + from2to3) - flagDelay)
+                    if (distanceDone > progressOffset + (from0to1 + from1to2 + from2to3) - flagDelay)
                     {
                         canFail = false;
                         g = Instantiate(flags[2], new Vector3(-9.5f, -1.1f, 0), Quaternion.identity).GetComponent<SceneObject>();
@@ -223,7 +416,7 @@ namespace Refactor
                     }
                     break;
                 case 5://pasted flag 3
-                    if (distanceDone > (from0to1 + from1to2 + from2to3))
+                    if (distanceDone > progressOffset + (from0to1 + from1to2 + from2to3))
                     {
                         canFail = false;
                         gameStep++;
@@ -236,11 +429,56 @@ namespace Refactor
 
         }
 
+        private float nextBoringCycle = 0;
+        private float boringCycleLength = 10;
+
+        private void BoringCycle()
+        {
+            if(distanceDone > nextBoringCycle)
+            {
+                EventGameController.Instance.dudeBoringCycle();
+            }
+        }
+
+        private void GameLogic()
+        {
+            if (frustration == 100 || bordom == 100)
+            {
+                if (canFail)
+                {
+                    GameOver();
+                }
+                else
+                {
+                    ClearScene();
+                }
+            }
+
+        }
+
         public void Update()
         {
             Move();
             playerManager.Move(TimeStep);
-            FlagCheck();
+            if(startProgress)
+                FlagCheck();
+            BoringCycle();
+
+            frustration = Mathf.Clamp(frustration, 0, 100);
+            bordom = Mathf.Clamp(bordom, 0, 100);
+
+            dudeManager.Move(frustration, bordom);
+
+            if (stucked)
+            {
+                if (nextResetByStuck != 0 && Time.time > nextResetByStuck)
+                {
+                    frustration = 100;
+                }
+            }
+
+            GameLogic();
+
         }
     }
 }
